@@ -14,7 +14,7 @@ Desarrollado y coordinado por un equipo de 4 agentes especializados:
 
 1. ✈️ **SAI CONSULT**: Plataforma digital corporativa para la consultora aeronáutica de servicios integrales. Desplegada en Cloudflare Pages Edge con latencia global inferior a 35ms TTFB, seguridad CSP estricta y cumplimiento 100/100 en Core Web Vitals.
 2. 🖥️ **SAI SOFTWARE**: Estación de trabajo de escritorio para estudios de factibilidad técnica LAD/LADH (RAAC 153/154 y OACI Anexo 14). Cálculo vectorial de rumbos magnéticos QFU, interpolación anemométrica en rosa de los vientos de 16 rumbos y generación de dossiers formales para ANAC y ENACOM.
-3. 🗺️ **CARTÓGRAFO**: Motor de cartografía aeronáutica y análisis geoespacial (GIS). Delimitación tridimensional de Superficies Limitadoras de Obstáculos (SLO), cartas de aproximación visual y georreferenciación precisa en elipsoide WGS-84.
+3. 🗺️ **[CARTÓGRAFO](https://github.com/LuchoDB/Cartografo)**: Plataforma de cartografía viva de software, análisis estático y onboarding inteligente para bases de código complejas y legacy. Generación de grafos interactivos de dependencias, flujos de negocio paso a paso y modelos ERD gobernados por 9 agentes de IA bajo el principio de Cero Alucinaciones. Desplegado en [GitHub Pages](https://luchodb.github.io/Cartografo/).
 
 ### Desarrollos Complementarios
 - **CuentaClara AI**: Gestión financiera inteligente con visión artificial multimodal (Google Gemini API) y empaquetado móvil Android con Capacitor 8.

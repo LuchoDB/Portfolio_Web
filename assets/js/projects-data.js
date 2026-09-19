@@ -20,7 +20,7 @@ const PROJECTS_DATA = [
     accentColor: "#0ea5e9",
     image: "assets/images/projects/sai-consult.svg",
     shortDescription:
-      "Plataforma digital de alta disponibilidad para la consultora aeronáutica SAI Consult. Diseñada bajo arquitectura Edge-First, logrando puntajes perfectos en Core Web Vitals (Lighthouse 100/100), seguridad estricta y presentación formal ante ANAC y ENACOM.",
+      "Plataforma digital corporativa para la consultora aeronáutica SAI Consult. Diseñada bajo arquitectura Edge-First en Cloudflare Pages, logrando puntajes perfectos en Core Web Vitals (Lighthouse 100/100), seguridad estricta y presentación formal ante ANAC y ENACOM.",
     metrics: [
       { label: "Puntaje Lighthouse", value: "100 / 100" },
       { label: "Latencia Global", value: "< 35ms TTFB" },
@@ -37,7 +37,7 @@ const PROJECTS_DATA = [
       clientContext:
         "La consultora aeronáutica SAI Consult requería un portal institucional de máxima sobriedad y rigor técnico para presentar servicios especializados de habilitación de pistas, helipuertos y trámites ante ANAC, ENACOM y Catastro.",
       technicalChallenge:
-        "Garantizar tiempos de carga prácticamente instantáneos a nivel internacional, blindaje contra vulnerabilidades web mediante políticas CSP estrictas y accesibilidad WCAG 2.1 AA sin recurrir a dependencias infladas.",
+        "Garantizar tiempos de carga prácticamente instantáneos a nivel internacional, blindaje contra vulnerabilidades web mediante políticas CSP estrictas y accesibilidad WCAG 2.1 AA sin librerías pesadas innecesarias.",
       solution:
         "Despliegue distribuido en la red Edge de Cloudflare con microcomponentes modulares, estricto marcado semántico HTML5 y cabeceras de seguridad de grado A+ (HSTS, Content-Security-Policy, X-Frame-Options).",
       architecturalHighlights: [
@@ -96,48 +96,49 @@ const PROJECTS_DATA = [
     }
   },
   {
-    id: "cartografo-aero-gis",
+    id: "cartografo-code-gis",
     title: "CARTÓGRAFO",
-    subtitle: "Motor de Cartografía Aeronáutica, Análisis Geoespacial & Obstáculos (SLO)",
+    subtitle: "Plataforma de Cartografía Viva de Software, Análisis Estático y Onboarding Inteligente",
     category: "aero",
-    categoryLabel: "Aeronáutica & GIS",
+    categoryLabel: "Cartografía de Software & IA",
     featured: true,
     flagship: true,
     year: "2026",
-    status: "Activo / Misión Crítica",
-    badge: "Cartografía WGS-84 • SLO RAAC",
-    gradient: "linear-gradient(135deg, #059669, #0284c7)",
-    accentColor: "#059669",
+    status: "Producción / Open Source",
+    badge: "Next.js 16 • 9 Agentes IA • Cero Alucinaciones",
+    gradient: "linear-gradient(135deg, #0ea5e9, #6366f1)",
+    accentColor: "#0ea5e9",
     image: "assets/images/projects/cartografo.svg",
     shortDescription:
-      "Sistema de información geográfica (GIS) y cartografía aeronáutica especializado en modelado tridimensional de Superficies Limitadoras de Obstáculos (SLO), cartas de aproximación visual y georreferenciación precisa bajo elipsoide WGS-84.",
+      "Plataforma para comprender bases de código complejas y legacy en horas en vez de meses. Ingesta repositorios vía GitHub o archivos ZIP y genera grafos interactivos de dependencias, flujos de negocio reconstruidos paso a paso, modelos entidad-relación (ERD) y tours guiados de onboarding gobernados por 9 agentes de IA y el principio de Cero Alucinaciones.",
     metrics: [
-      { label: "Referencial", value: "Elipsoide WGS-84" },
-      { label: "Superficies", value: "SLO 3D RAAC" },
-      { label: "Modelo Magnético", value: "WMM Integrado" },
-      { label: "Cartas", value: "Aproximación / OACI" }
+      { label: "Tiempo Onboarding", value: "Horas vs Meses" },
+      { label: "Principio Base", value: "Cero Alucinaciones" },
+      { label: "Sistema de Agentes", value: "9 Agentes IA" },
+      { label: "Stack Tecnológico", value: "Next.js 16 + React 19" }
     ],
-    tags: ["Cartografía GIS", "WGS-84", "Cálculo Geodésico", "Superficies SLO", "TypeScript", "Modelado 3D"],
+    tags: ["Next.js 16", "React 19", "TypeScript 5.7", "Tailwind CSS v4", "Multi-Agente", "Análisis Estático", "GitHub Pages"],
     links: {
-      github: "https://github.com/LuchoDB",
-      demo: "#",
+      github: "https://github.com/LuchoDB/Cartografo",
+      demo: "https://luchodb.github.io/Cartografo/",
       caseStudy: true
     },
     caseStudy: {
       clientContext:
-        "La delimitación de servidumbres de paso aeronáutico y el análisis de obstáculos circundantes a un aeródromo o helipuerto requieren precisión milimétrica para evitar infracciones a las áreas críticas de despegue y aproximación.",
+        "Incorporarse a bases de código legacy de cientos de miles de líneas suele demandar semanas o meses de arqueología de software, navegando código indocumentado, arquitecturas difusas y dependencias obsoletas.",
       technicalChallenge:
-        "Proyectar las pendientes reglamentarias de ascenso (2.5%, 3.33%, 5%) y superficies de transición lateral sobre terrenos irregulares con datos topográficos heterogéneos.",
+        "Automatizar la comprensión profunda de repositorios complejos sin incurrir en alucinaciones plausibles pero falsas, asegurando que cada diagnóstico esté respaldado por evidencia verificable en el código fuente.",
       solution:
-        "Implementación de algoritmos de geometría esférica y cónica conforme, integrando el elipsoide WGS-84 y modelos de declinación magnética para calcular conos de despeje y verificación de no penetración de obstáculos.",
+        "Desarrollo de Cartógrafo con Next.js 16 y React 19. El sistema ingesta repositorios vía URL o ZIP y orquesta 9 agentes especializados bajo el principio de Cero Alucinaciones, distinguiendo con rigor hechos <detectados> de hipótesis <inferidas>.",
       architecturalHighlights: [
-        "Transformación y proyección de coordenadas geodésicas (latitud/longitud decimal, sexagesimal y Gauss-Krüger).",
-        "Trazado vectorial de cartas de aeródromo conforme a especificaciones OACI Anexo 4.",
-        "Detección de penetración en superficies de aproximación, transición y superficie horizontal interna.",
-        "Exportación de planos acotados de deslinde para expedientes de mensura y catastro municipal."
+        "Orquestador multi-agente que sintetiza el conocimiento de 9 agentes especializados (Explorador, Arquitectura, Flujos, BD/ERD, Riesgos/CVE).",
+        "Generación reactiva de grafos de arquitectura y dependencias con renderizado ultrarrápido con Tailwind CSS v4.",
+        "Tours interactivos de onboarding guiado adaptados al rol del desarrollador (Junior, Semi-Senior, Senior).",
+        "Matriz de riesgos, CVEs y deuda técnica priorizada con enlaces directos a archivos y líneas de código.",
+        "Despliegue automatizado en GitHub Pages con pipeline de CI/CD vía GitHub Actions."
       ],
       impact:
-        "Aseguramiento del 100% de cumplimiento en seguridad operacional y despeje de obstáculos en inspecciones de la autoridad aeronáutica."
+        "Reducción radical del tiempo de comprensión de sistemas legacy de meses a horas, acelerando el onboarding de equipos de ingeniería con cero margen de error."
     }
   },
   {
@@ -302,16 +303,16 @@ const SERVICES_DATA = [
     ]
   },
   {
-    id: "service-gis",
-    title: "Cartografía Aeronáutica & Análisis Geoespacial (GIS)",
-    badge: "Elipsoide WGS-84",
+    id: "service-carto-code",
+    title: "Cartografía de Software, Análisis Estático & Multi-Agente",
+    badge: "Next.js 16 • Cero Alucinaciones",
     description:
-      "Sistemas de información geográfica especializados en el trazado de cartas de aproximación visual, modelado tridimensional de Superficies Limitadoras de Obstáculos (SLO) y georreferenciación de umbrales con modelos de declinación magnética global.",
+      "Plataformas avanzadas para ingesta y mapeo de arquitecturas de software legacy y complejas (Suite Cartógrafo). Descomposición de sistemas mediante grafos vivos de dependencias, reconstrucción de flujos de negocio y tours guiados de onboarding orquestados por agentes de inteligencia artificial sin alucinaciones.",
     deliverables: [
-      "Cartas de aproximación visual conforme OACI Anexo 4",
-      "Evaluación y verificación 3D de obstáculos circundantes",
-      "Georreferenciación precisa en sistemas de coordenadas WGS-84",
-      "Planos de deslinde y servidumbres aeronáuticas"
+      "Mapeo vivo de dependencias y arquitectura en tiempo real",
+      "Modelos entidad-relación (ERD) interactivos",
+      "Auditoría de riesgos, CVEs y deuda técnica priorizada",
+      "Tours de onboarding adaptativos por seniority técnico"
     ]
   },
   {
@@ -338,14 +339,24 @@ const TECH_STACK = [
       { name: "RAAC 153 (LAD / Pistas)", level: "Especialista", detail: "Diseño geométrico, márgenes, pendientes longitudinales y transversales" },
       { name: "RAAC 154 / OACI Anexo 14 (LADH)", level: "Especialista", detail: "FATO, TLOF, áreas de seguridad, superficies de aproximación" },
       { name: "Cálculo Vectorial QFU & Vientos", level: "Especialista", detail: "Rosas de viento 16 rumbos, coeficiente de usabilidad ≥ 95%" },
-      { name: "Cartografía Aeronáutica WGS-84", level: "Avanzado", detail: "Superficies Limitadoras de Obstáculos (SLO), cartas OACI Anexo 4" }
+      { name: "Cartografía y Normativa ANAC", level: "Avanzado", detail: "Superficies Limitadoras de Obstáculos (SLO), expedientes ANAC/ENACOM" }
+    ]
+  },
+  {
+    category: "Cartografía de Software & Análisis Estático",
+    icon: "layers",
+    skills: [
+      { name: "Cartógrafo Multi-Agente", level: "Creador", detail: "Orquestación de 9 agentes IA, análisis de grafos y deuda técnica" },
+      { name: "Principio Cero Alucinaciones", level: "Especialista", detail: "Hechos <detectados> verificables vs hipótesis <inferidas>" },
+      { name: "Next.js 16 & React 19", level: "Avanzado", detail: "Arquitectura de componentes, App Router, Server Components" },
+      { name: "Tailwind CSS v4 & Lucide", level: "Avanzado", detail: "Sistemas de diseño modernos y estilizado dinámico" }
     ]
   },
   {
     category: "Lenguajes & Paradigmas",
     icon: "code",
     skills: [
-      { name: "TypeScript", level: "Avanzado", detail: "Tipado estricto, contratos de datos, modularidad sólida" },
+      { name: "TypeScript 5.7", level: "Avanzado", detail: "Tipado estricto, contratos de datos, modularidad sólida" },
       { name: "JavaScript (ES6+)", level: "Experto", detail: "Asincronía, Web APIs, Event Loop, micro-optimizaciones" },
       { name: "Python", level: "Avanzado", detail: "Algoritmia, automatización, análisis numérico y scripts" },
       { name: "HTML5 Semántico & SEO", level: "Experto", detail: "Accesibilidad WCAG 2.1 AA, Schema.org, metadatos enriquecidos" },
@@ -353,22 +364,12 @@ const TECH_STACK = [
     ]
   },
   {
-    category: "Frontend, Desktop & Mobile",
+    category: "Desktop, Cloud & Bases de Datos",
     icon: "layout",
     skills: [
       { name: "Electron Desktop", level: "Avanzado", detail: "IPC seguro con ContextBridge, empaquetado nativo Windows" },
-      { name: "React 19 / 18", level: "Avanzado", detail: "Componentes funcionales, hooks personalizados, estado reactivo" },
-      { name: "Capacitor 8 / Android", level: "Avanzado", detail: "Puentes nativos de hardware, emulación y testing en dispositivo" },
-      { name: "Tailwind CSS & Design Systems", level: "Avanzado", detail: "Sistemas de diseño escalables, tokens y glassmorphism" }
-    ]
-  },
-  {
-    category: "Cloud, Edge & Bases de Datos",
-    icon: "cloud",
-    skills: [
       { name: "Cloudflare Pages & Edge", level: "Avanzado", detail: "Distribución CDN global, Wrangler, headers de seguridad HTTP" },
       { name: "SQLite Embebido (node:sqlite)", level: "Avanzado", detail: "Persistencia local, transacciones seguras e indexación" },
-      { name: "Google Gemini Multimodal API", level: "Avanzado", detail: "Structured output JSON, OCR asistido por visión artificial" },
       { name: "Lighthouse & Core Web Vitals", level: "Experto", detail: "Auditorías de 100/100 en rendimiento, accesibilidad y SEO" }
     ]
   }
@@ -383,18 +384,18 @@ const ENGINEERING_PHILOSOPHY = [
   },
   {
     number: "02",
+    title: "Principio de Cero Alucinaciones en Análisis de Código",
+    description: "En Cartógrafo y en cada análisis de arquitectura, distinguimos estrictamente los hechos demostrables en el código (<detectado>) de las hipótesis (<inferido>), protegiendo al equipo de falsas certezas."
+  },
+  {
+    number: "03",
     title: "Rendimiento Extremo sin Dependencias Infladas",
     description: "Priorizo arquitecturas limpias y código eficiente. Si una solución puede resolverse con JavaScript moderno y CSS nativo en el Edge con carga sub-segundo, evitamos librerías superfluas."
   },
   {
-    number: "03",
-    title: "Diseño Ergonómico para Operaciones Críticas",
-    description: "Una estación de trabajo profesional debe reducir la fatiga cognitiva. Las rosas de vientos, matrices de datos y esquemas técnicos se diseñan con alta legibilidad y precisión visual."
-  },
-  {
     number: "04",
-    title: "Integración Práctica de Inteligencia Artificial",
-    description: "Aprovecho modelos multimodales de última generación (como Gemini Vision) donde aportan automatización real demostrable, utilizando contratos JSON estrictos para garantizar predictibilidad total."
+    title: "Diseño Ergonómico para Operaciones Complejas",
+    description: "Una estación de trabajo profesional debe reducir la fatiga cognitiva. Las rosas de vientos, mapas de arquitectura y esquemas técnicos se diseñan con alta legibilidad y precisión visual."
   }
 ];
 
@@ -404,7 +405,7 @@ const AUTHOR_PROFILE = {
   shortName: "Luciano",
   monogram: "LDB",
   role: "Ingeniero de Software & Diseñador de Sistemas Críticos",
-  specialties: "Sistemas Aeronáuticos (RAAC/OACI) • Arquitectura Cloud Edge • Desktop Electron • Fullstack",
+  specialties: "Sistemas Aeronáuticos (RAAC/OACI) • Cartografía de Software • Cloud Edge • Desktop Electron",
   location: "Argentina / Remoto Internacional",
   email: "lucianodiazbertozzi@gmail.com",
   github: "https://github.com/LuchoDB",
