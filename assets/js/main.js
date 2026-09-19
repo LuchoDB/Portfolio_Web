@@ -61,7 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return `
         <article class="flagship-card" id="flagship-card-${escapeHtml(project.id)}">
-          <span class="flagship-badge-top">${escapeHtml(project.badge)}</span>
+          <div class="mock-window-header">
+            <div class="mock-window-dots" aria-hidden="true">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="mock-window-title">src/${escapeHtml(project.id)} • main</span>
+            <span class="flagship-badge-top">${escapeHtml(project.badge)}</span>
+          </div>
           <div class="flagship-preview">
             <img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)}" class="flagship-svg-img" loading="lazy" width="600" height="340" />
           </div>
