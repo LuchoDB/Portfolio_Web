@@ -1,25 +1,27 @@
-# 🚀 Portafolio de Ingeniería de Software — Luciano Díaz Bertozzi
+# 🚀 Portafolio de Desarrollo de Software — Luciano Díaz Bertozzi
 
-Sitio web profesional, ejecutivo y de alto rendimiento técnico, diseñado para exhibir sistemas de misión crítica, ingeniería aeronáutica y plataformas web de latencia ultra-baja. Estéticamente inspirado en el diseño **NextGenAppsPro** (Bootstrap 5 Style por Mahmudul Hasan Shaon), con **puntuación 100/100 en Google Lighthouse** y arquitectura semántica para SEO de alto impacto.
+Sitio web personal de desarrollo de software, moderno, vistoso y de alto rendimiento técnico. Diseñado en **Modo Claro (Light Mode)** inspirado en la estética ejecutiva de **NextGenAppsPro** (Bootstrap 5 Style por Mahmudul Hasan Shaon), con **puntuación 100/100 en Google Lighthouse** y arquitectura semántica para SEO de alto impacto.
 
-Desarrollado y coordinado por un equipo de 4 agentes especializados:
-1. **Agente Orquestador (Tech Lead & QA)**: Cohesión técnica, ausencia de dependencias infladas y validación de estándares.
-2. **Agente de Arquitectura de la Información & Copywriting**: Nomenclatura aeronáutica (RAAC 153/154, OACI Anexo 14), redacción técnica y desglose en *Case Studies*.
-3. **Agente de Diseño Visual y UX/UI**: Maquetación de dos columnas para Hero, tarjetas flagship amplias, badges flotantes interactivos y glassmorphism en tema Obsidian/Dark Slate.
-4. **Agente de SEO Técnico y Rendimiento Web**: Marcado Schema.org JSON-LD para aplicaciones de ingeniería, Open Graph, Twitter Cards, `sitemap.xml` y `robots.txt`.
+**Perfil**: Estudiante avanzado pronto a graduarme de la **Tecnicatura Universitaria en Programación** en la **Universidad Tecnológica Nacional - Facultad Regional Paraná (UTN - FRP)**.
 
 ---
 
 ## 🌟 Proyectos Protagonistas (Flagship)
 
-1. ✈️ **SAI CONSULT**: Plataforma digital corporativa para la consultora aeronáutica de servicios integrales. Desplegada en Cloudflare Pages Edge con latencia global inferior a 35ms TTFB, seguridad CSP estricta y cumplimiento 100/100 en Core Web Vitals.
-2. 🖥️ **SAI SOFTWARE**: Estación de trabajo de escritorio para estudios de factibilidad técnica LAD/LADH (RAAC 153/154 y OACI Anexo 14). Cálculo vectorial de rumbos magnéticos QFU, interpolación anemométrica en rosa de los vientos de 16 rumbos y generación de dossiers formales para ANAC y ENACOM.
-3. 🗺️ **[CARTÓGRAFO](https://github.com/LuchoDB/Cartografo)**: Plataforma de cartografía viva de software, análisis estático y onboarding inteligente para bases de código complejas y legacy. Generación de grafos interactivos de dependencias, flujos de negocio paso a paso y modelos ERD gobernados por 9 agentes de IA bajo el principio de Cero Alucinaciones. Desplegado en [GitHub Pages](https://luchodb.github.io/Cartografo/).
+1. 🖥️ **[SAI SOFTWARE](https://github.com/LuchoDB/SAI_Software)**: Estación de trabajo de escritorio desarrollada con **Electron, React 19 y TypeScript**. Implementa un motor de cálculo numérico y vectorial 2D para orientación azimutal, descomposición de componentes ortogonales y rosa de rumbos interactiva, con almacenamiento relacional transaccional en **SQLite embebido** (offline-first).
+   - Repositorio: `https://github.com/LuchoDB/SAI_Software.git`
+
+2. ☁️ **[SAI CONSULT](https://github.com/LuchoDB/SAI-Consult)**: Plataforma web corporativa de presentación técnica desplegada en la red global Edge de **Cloudflare Pages**. Diseñada con foco prioritario en rendimiento extremo: **100/100 constante en Google Lighthouse**, latencia sub-35ms TTFB, cabeceras de seguridad HTTP A+ y accesibilidad WCAG 2.1 AA.
+   - Repositorio: `https://github.com/LuchoDB/SAI-Consult.git`
+
+3. 🗺️ **[CARTÓGRAFO](https://github.com/LuchoDB/Cartografo)**: Plataforma de cartografía viva de software, análisis estático y onboarding inteligente para bases de código complejas y legacy. Generación reactiva de grafos de dependencias, flujos lógicos reconstruidos y modelos ERD gobernados por 9 agentes de IA bajo el principio de **Cero Alucinaciones** (hechos verificables vs hipótesis).
+   - Repositorio: `https://github.com/LuchoDB/Cartografo.git`
+   - Demo: [luchodb.github.io/Cartografo](https://luchodb.github.io/Cartografo/)
 
 ### Desarrollos Complementarios
-- **CuentaClara AI**: Gestión financiera inteligente con visión artificial multimodal (Google Gemini API) y empaquetado móvil Android con Capacitor 8.
-- **Python Mastery Lab**: Plataforma interactiva de visualización algorítmica y análisis de complejidad asintótica Big-O.
-- **Nexus System Telemetry**: Panel de supervisión de microservicios con streaming en tiempo real vía WebSockets.
+- **CuentaClara AI**: Gestión financiera personal con visión artificial multimodal (Google Gemini API) y aplicación Android nativa con Capacitor 8.
+- **Python Mastery Lab**: Entorno interactivo de visualización algorítmica y análisis de complejidad Big-O ejecutado en hilos de Web Workers.
+- **Nexus System Telemetry**: Panel reactivo de telemetría y streaming continuo de métricas en tiempo real con WebSockets y Canvas 2D.
 
 ---
 
@@ -27,20 +29,20 @@ Desarrollado y coordinado por un equipo de 4 agentes especializados:
 
 ```
 Portfolio_Web/
-├── index.html                  # Marcado HTML5 semántico, metadatos y Schema.org JSON-LD
+├── index.html                  # Marcado HTML5 semántico en Modo Claro y Schema.org JSON-LD
 ├── sitemap.xml                 # Mapa del sitio para indexación en Google/Bing
 ├── robots.txt                  # Directivas de rastreo para spiders
 ├── assets/
 │   ├── css/
-│   │   ├── style.css           # Sistema de diseño NextGenAppsPro, tokens y componentes
-│   │   └── animations.css      # Animaciones de entrada, efectos hover y transiciones
+│   │   ├── style.css           # Sistema de diseño Light Mode, tokens y componentes
+│   │   └── animations.css      # Animaciones fluidas, efectos hover y transiciones
 │   ├── js/
-│   │   ├── projects-data.js    # Base de datos estructurada de proyectos y servicios
-│   │   ├── main.js             # Lógica de interfaz (filtros, modales, copia rápida, a11y)
+│   │   ├── projects-data.js    # Base de datos estructurada de proyectos, stack y servicios
+│   │   ├── main.js             # Lógica interactiva (filtros, modales, copiado rápido, a11y)
 │   │   └── seo-helper.js       # Script de verificación y auditoría SEO en runtime
 │   └── images/
-│       ├── favicon.svg         # Isotipo formal LDB
-│       ├── og-image.svg        # Portada formal para redes sociales (Luciano Díaz Bertozzi)
+│       ├── favicon.svg         # Favicon minimalista con letra "L"
+│       ├── og-image.svg        # Portada social con perfil de programador UTN - FRP
 │       └── projects/           # Gráficos vectoriales técnicos de cada proyecto
 └── README.md                   # Documentación técnica del proyecto
 ```
@@ -49,14 +51,15 @@ Portfolio_Web/
 
 ## 🌐 Despliegue en GitHub Pages
 
-1. Dirígete a tu repositorio: `https://github.com/LuchoDB/Portfolio_Web`.
-2. Ve a **Settings** > **Pages**.
-3. En **Source**, selecciona `Deploy from a branch`, elige la rama `main` y la carpeta `/(root)`.
-4. En 1-2 minutos estará disponible en: `https://luchodb.github.io/Portfolio_Web/`
+1. Repositorio de origen: `https://github.com/LuchoDB/Portfolio_Web`.
+2. El sitio está preparado para desplegarse mediante GitHub Pages desde la rama `main` en la carpeta `/(root)`.
+3. URL pública: `https://luchodb.github.io/Portfolio_Web/`
 
 ---
 
-## 📄 Autor
+## 👨‍💻 Autor
 
-**Luciano Díaz Bertozzi** — Ingeniero de Software & Diseñador de Sistemas Críticos.  
-Contacto directo: `lucianodiazbertozzi@gmail.com`
+**Luciano Díaz Bertozzi**  
+Estudiante de la Tecnicatura Universitaria en Programación — Universidad Tecnológica Nacional (UTN - FRP)  
+- GitHub: [@LuchoDB](https://github.com/LuchoDB)  
+- Correo: `lucianodiazbertozzi@gmail.com`

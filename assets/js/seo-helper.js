@@ -1,7 +1,7 @@
 /**
  * Módulo de Utilidades y Validación SEO
  * Agente Especialista en SEO Técnico & Performance
- * Luciano (LuchoDB) Portfolio
+ * Luciano Díaz Bertozzi Portfolio
  */
 
 (function () {

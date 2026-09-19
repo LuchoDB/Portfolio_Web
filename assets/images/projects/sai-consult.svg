@@ -1,52 +1,61 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
   <defs>
-    <linearGradient id="saiBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#061f18"/>
-      <stop offset="100%" stop-color="#040d0a"/>
+    <linearGradient id="consultLightBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#edf2f7"/>
     </linearGradient>
-    <linearGradient id="emeraldTeal" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#10b981"/>
-      <stop offset="100%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0284c7"/>
     </linearGradient>
   </defs>
 
-  <rect width="600" height="340" fill="url(#saiBg)"/>
+  <!-- Background -->
+  <rect width="600" height="340" fill="url(#consultLightBg)"/>
 
-  <!-- Global Edge Network Globe Lines -->
+  <!-- Global Edge Network Globe Ring -->
   <g transform="translate(300, 170)">
-    <circle cx="0" cy="0" r="110" fill="none" stroke="rgba(16, 185, 129, 0.2)" stroke-width="1.5"/>
-    <ellipse cx="0" cy="0" rx="110" ry="40" fill="none" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1.5"/>
-    <ellipse cx="0" cy="0" rx="40" ry="110" fill="none" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="115" fill="none" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1.8"/>
+    <ellipse cx="0" cy="0" rx="115" ry="42" fill="none" stroke="rgba(16, 185, 129, 0.3)" stroke-width="1.8"/>
+    <ellipse cx="0" cy="0" rx="42" ry="115" fill="none" stroke="rgba(16, 185, 129, 0.3)" stroke-width="1.8"/>
     
     <!-- Edge PoP Nodes -->
-    <circle cx="-60" cy="-30" r="5" fill="#10b981"/>
-    <circle cx="50" cy="20" r="6" fill="#06b6d4"/>
-    <circle cx="10" cy="-60" r="4.5" fill="#34d399"/>
-    <circle cx="-20" cy="50" r="5" fill="#38bdf8"/>
+    <circle cx="-65" cy="-35" r="6" fill="#10b981"/>
+    <circle cx="55" cy="25" r="7" fill="#0284c7"/>
+    <circle cx="15" cy="-65" r="5" fill="#34d399"/>
+    <circle cx="-25" cy="55" r="5.5" fill="#38bdf8"/>
     
-    <!-- Connection lines -->
-    <path d="M-60 -30 L10 -60 L50 20 L-20 50 Z" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1.5" fill="rgba(16, 185, 129, 0.05)"/>
+    <path d="M-65 -35 L15 -65 L55 25 L-25 55 Z" stroke="rgba(16, 185, 129, 0.45)" stroke-width="1.8" fill="rgba(16, 185, 129, 0.06)"/>
   </g>
 
-  <!-- Lighthouse 100 Badge -->
-  <g transform="translate(230, 110)">
-    <rect width="140" height="120" rx="16" fill="rgba(6, 31, 24, 0.9)" stroke="url(#emeraldTeal)" stroke-width="2"/>
-    <circle cx="70" cy="45" r="28" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="3"/>
-    <text x="70" y="52" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="900" fill="#10b981" text-anchor="middle">100</text>
-    <text x="70" y="90" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">LIGHTHOUSE</text>
-    <text x="70" y="104" font-family="'JetBrains Mono', monospace" font-size="9" fill="#34d399" text-anchor="middle">CORE WEB VITALS</text>
+  <!-- Lighthouse 100 Central Badge -->
+  <g transform="translate(230, 105)">
+    <rect width="140" height="130" rx="18" fill="#ffffff" stroke="#10b981" stroke-width="2.5" filter="drop-shadow(0 10px 20px rgba(16, 185, 129, 0.15))"/>
+    <circle cx="70" cy="48" r="28" fill="rgba(16, 185, 129, 0.12)" stroke="#10b981" stroke-width="3"/>
+    <text x="70" y="55" font-family="'JetBrains Mono', monospace" font-size="19" font-weight="900" fill="#059669" text-anchor="middle">100</text>
+    <text x="70" y="96" font-family="'Outfit', sans-serif" font-size="12" font-weight="800" fill="#0f172a" text-anchor="middle">LIGHTHOUSE</text>
+    <text x="70" y="112" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#10b981" text-anchor="middle">CORE WEB VITALS</text>
   </g>
 
-  <!-- Side Floating Tags -->
-  <g transform="translate(40, 60)">
-    <rect width="140" height="46" rx="8" fill="rgba(10, 25, 20, 0.85)" stroke="rgba(16, 185, 129, 0.3)"/>
-    <text x="14" y="20" font-family="'Outfit', sans-serif" font-size="10" fill="#94a3b8">Latencia Global TTFB</text>
-    <text x="14" y="36" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#10b981">&lt; 35ms CDN EDGE</text>
+  <!-- Left Card: Latency TTFB -->
+  <g transform="translate(30, 40)">
+    <rect width="165" height="70" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="14" y="24" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#64748b">LATENCIA GLOBAL</text>
+    <text x="14" y="46" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="800" fill="#059669">&lt; 35ms TTFB</text>
+    <text x="14" y="62" font-family="'Outfit', sans-serif" font-size="10" fill="#0284c7">Red CDN Edge Distribuida</text>
   </g>
 
-  <g transform="translate(420, 230)">
-    <rect width="140" height="46" rx="8" fill="rgba(10, 25, 20, 0.85)" stroke="rgba(16, 185, 129, 0.3)"/>
-    <text x="14" y="20" font-family="'Outfit', sans-serif" font-size="10" fill="#94a3b8">Infraestructura</text>
-    <text x="14" y="36" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#38bdf8">Cloudflare Pages</text>
+  <!-- Right Card: Cloudflare Architecture -->
+  <g transform="translate(405, 40)">
+    <rect width="165" height="70" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="14" y="24" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#64748b">INFRAESTRUCTURA</text>
+    <text x="14" y="46" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="800" fill="#0284c7">Cloudflare Pages</text>
+    <text x="14" y="62" font-family="'Outfit', sans-serif" font-size="10" fill="#059669">Seguridad Grado A+ CSP</text>
+  </g>
+
+  <!-- Bottom Link Badge -->
+  <g transform="translate(180, 275)">
+    <rect width="240" height="36" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="120" y="23" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">github.com/LuchoDB/SAI-Consult</text>
   </g>
 </svg>
