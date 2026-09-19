@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://luchodb.github.io/Portfolio_Web/sitemap.xml

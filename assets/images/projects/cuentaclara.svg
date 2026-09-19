@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ccBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1224"/>
+      <stop offset="100%" stop-color="#050a14"/>
+    </linearGradient>
+    <linearGradient id="ccAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <pattern id="gridPattern" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="340" fill="url(#ccBg)"/>
+  <rect width="600" height="340" fill="url(#gridPattern)"/>
+
+  <!-- Ambient Glow -->
+  <circle cx="300" cy="170" r="140" fill="#0ea5e9" opacity="0.12" filter="blur(40px)"/>
+
+  <!-- Mobile Frame Outline -->
+  <g transform="translate(190, 30)">
+    <rect x="0" y="0" width="220" height="280" rx="28" fill="#0f172a" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <rect x="75" y="10" width="70" height="14" rx="7" fill="#1e293b"/>
+    
+    <!-- App UI Mockup -->
+    <rect x="16" y="40" width="188" height="50" rx="12" fill="rgba(14, 165, 233, 0.12)" stroke="rgba(14, 165, 233, 0.3)" stroke-width="1"/>
+    <text x="30" y="62" font-family="'Outfit', sans-serif" font-size="11" fill="#94a3b8">Balance Total (ARS)</text>
+    <text x="30" y="81" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700" fill="#ffffff">$ 342,850.00</text>
+    <circle cx="180" cy="65" r="12" fill="url(#emeraldGrad)"/>
+    <path d="M176 65 L179 68 L185 62" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+
+    <!-- Receipt Scan HUD -->
+    <g transform="translate(16, 105)">
+      <rect x="0" y="0" width="188" height="110" rx="10" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(99, 102, 241, 0.4)" stroke-width="1.2"/>
+      <!-- Scan corners -->
+      <path d="M8 20 L8 8 L20 8" stroke="#0ea5e9" stroke-width="2.5" fill="none"/>
+      <path d="M168 8 L180 8 L180 20" stroke="#0ea5e9" stroke-width="2.5" fill="none"/>
+      <path d="M8 90 L8 102 L20 102" stroke="#0ea5e9" stroke-width="2.5" fill="none"/>
+      <path d="M168 102 L180 102 L180 90" stroke="#0ea5e9" stroke-width="2.5" fill="none"/>
+      
+      <!-- Scan laser line -->
+      <line x1="12" y1="52" x2="176" y2="52" stroke="#0ea5e9" stroke-width="2" opacity="0.85"/>
+      
+      <!-- AI OCR Tag -->
+      <rect x="25" y="65" width="138" height="24" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+      <text x="94" y="81" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#a5b4fc" text-anchor="middle">✨ GEMINI VISION OCR</text>
+    </g>
+
+    <!-- Bottom Nav -->
+    <rect x="30" y="235" width="160" height="26" rx="13" fill="#1e293b"/>
+    <circle cx="65" cy="248" r="4" fill="#0ea5e9"/>
+    <circle cx="110" cy="248" r="4" fill="#64748b"/>
+    <circle cx="155" cy="248" r="4" fill="#64748b"/>
+  </g>
+
+  <!-- Side Floating Tags -->
+  <g transform="translate(45, 90)">
+    <rect width="120" height="42" rx="10" fill="rgba(15, 23, 42, 0.8)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="14" y="20" font-family="'Outfit', sans-serif" font-size="10" fill="#94a3b8">Precisión Facturas</text>
+    <text x="14" y="34" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#10b981">98.7% Estructurado</text>
+  </g>
+
+  <g transform="translate(435, 170)">
+    <rect width="130" height="42" rx="10" fill="rgba(15, 23, 42, 0.8)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="14" y="20" font-family="'Outfit', sans-serif" font-size="10" fill="#94a3b8">Plataforma</text>
+    <text x="14" y="34" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#38bdf8">Capacitor 8 / Android</text>
+  </g>
+</svg>

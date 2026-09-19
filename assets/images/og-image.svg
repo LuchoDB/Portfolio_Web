@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="ogBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05070c"/>
+      <stop offset="40%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <pattern id="ogGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+  <rect width="1200" height="630" fill="url(#ogGrid)"/>
+
+  <!-- Ambient Glows -->
+  <circle cx="200" cy="150" r="280" fill="#06b6d4" opacity="0.12" filter="blur(60px)"/>
+  <circle cx="1000" cy="450" r="300" fill="#8b5cf6" opacity="0.12" filter="blur(60px)"/>
+
+  <!-- Brand Emblem -->
+  <g transform="translate(100, 100)">
+    <rect width="64" height="64" rx="16" fill="#0f172a" stroke="url(#textGrad)" stroke-width="2"/>
+    <text x="32" y="44" font-family="'JetBrains Mono', monospace" font-size="30" font-weight="900" fill="url(#textGrad)" text-anchor="middle">&lt;L/&gt;</text>
+    <text x="85" y="42" font-family="'Outfit', sans-serif" font-size="28" font-weight="700" fill="#ffffff">Luciano / LuchoDB</text>
+  </g>
+
+  <!-- Big Title -->
+  <g transform="translate(100, 240)">
+    <text x="0" y="0" font-family="'Outfit', sans-serif" font-size="64" font-weight="800" fill="#ffffff" letter-spacing="-0.03em">
+      Ingeniería de Software &amp;
+    </text>
+    <text x="0" y="80" font-family="'Outfit', sans-serif" font-size="64" font-weight="800" fill="url(#textGrad)" letter-spacing="-0.03em">
+      Proyectos de Alto Rendimiento
+    </text>
+  </g>
+
+  <!-- Description -->
+  <g transform="translate(100, 390)">
+    <text x="0" y="0" font-family="'Outfit', sans-serif" font-size="24" fill="#94a3b8">
+      Fullstack • Aplicaciones Móviles React &amp; Android • Gráficos 3D WebGL • Inteligencia Artificial
+    </text>
+  </g>
+
+  <!-- Metric Badges Bottom -->
+  <g transform="translate(100, 480)">
+    <rect width="220" height="70" rx="12" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="20" y="32" font-family="'Outfit', sans-serif" font-size="14" fill="#94a3b8">Lighthouse Core</text>
+    <text x="20" y="56" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="800" fill="#10b981">100 / 100 Perf</text>
+
+    <g transform="translate(240, 0)">
+      <rect width="220" height="70" rx="12" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.1)"/>
+      <text x="20" y="32" font-family="'Outfit', sans-serif" font-size="14" fill="#94a3b8">Tecnología IA</text>
+      <text x="20" y="56" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="800" fill="#38bdf8">Gemini Multimodal</text>
+    </g>
+
+    <g transform="translate(480, 0)">
+      <rect width="220" height="70" rx="12" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.1)"/>
+      <text x="20" y="32" font-family="'Outfit', sans-serif" font-size="14" fill="#94a3b8">Motor Gráfico</text>
+      <text x="20" y="56" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="800" fill="#c084fc">Three.js 60 FPS</text>
+    </g>
+  </g>
+</svg>
