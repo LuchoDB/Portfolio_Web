@@ -1,30 +1,166 @@
 /**
- * Base de Datos Estructurada de Proyectos y Casos de Estudio
- * Arquitectura de Información diseñada por el Agente de Contenidos & Copywriting
- * Autor: Luciano (LuchoDB)
+ * Base de Datos Estructurada de Proyectos, Servicios y Casos de Estudio
+ * Autor: Luciano Díaz Bertozzi
+ * Especialidad: Ingeniería de Software, Sistemas Aeronáuticos & Plataformas de Alto Rendimiento
  */
 
 const PROJECTS_DATA = [
   {
+    id: "sai-consult-platform",
+    title: "SAI CONSULT",
+    subtitle: "Plataforma Corporativa Edge de Servicios Aeronáuticos Integrales",
+    category: "aero",
+    categoryLabel: "Aeronáutica & Cloud",
+    featured: true,
+    flagship: true,
+    year: "2026",
+    status: "Producción / Edge Network",
+    badge: "Cloudflare Edge • Lighthouse 100",
+    gradient: "linear-gradient(135deg, #0ea5e9, #10b981)",
+    accentColor: "#0ea5e9",
+    image: "assets/images/projects/sai-consult.svg",
+    shortDescription:
+      "Plataforma digital de alta disponibilidad para la consultora aeronáutica SAI Consult. Diseñada bajo arquitectura Edge-First, logrando puntajes perfectos en Core Web Vitals (Lighthouse 100/100), seguridad estricta y presentación formal ante ANAC y ENACOM.",
+    metrics: [
+      { label: "Puntaje Lighthouse", value: "100 / 100" },
+      { label: "Latencia Global", value: "< 35ms TTFB" },
+      { label: "Cumplimiento", value: "ANAC / OACI" },
+      { label: "Infraestructura", value: "Cloudflare Edge" }
+    ],
+    tags: ["Cloudflare Pages", "Wrangler", "Vanilla JS", "Modern CSS", "Seguridad CSP", "SEO Semántico"],
+    links: {
+      github: "https://github.com/LuchoDB",
+      demo: "#",
+      caseStudy: true
+    },
+    caseStudy: {
+      clientContext:
+        "La consultora aeronáutica SAI Consult requería un portal institucional de máxima sobriedad y rigor técnico para presentar servicios especializados de habilitación de pistas, helipuertos y trámites ante ANAC, ENACOM y Catastro.",
+      technicalChallenge:
+        "Garantizar tiempos de carga prácticamente instantáneos a nivel internacional, blindaje contra vulnerabilidades web mediante políticas CSP estrictas y accesibilidad WCAG 2.1 AA sin recurrir a dependencias infladas.",
+      solution:
+        "Despliegue distribuido en la red Edge de Cloudflare con microcomponentes modulares, estricto marcado semántico HTML5 y cabeceras de seguridad de grado A+ (HSTS, Content-Security-Policy, X-Frame-Options).",
+      architecturalHighlights: [
+        "Distribución en 300+ nodos Edge de Cloudflare para mínima latencia global.",
+        "Largest Contentful Paint (LCP) inferior a 0.5 segundos verificado en Google PageSpeed.",
+        "Arquitectura de información orientada a directores de aeródromos, propietarios de aeronaves y entidades regulatorias.",
+        "Formularios serverless y métricas de privacidad sin rastreo invasivo."
+      ],
+      impact:
+        "Posicionamiento orgánico de referencia en servicios de consultoría aeronáutica y disponibilidad ininterrumpida del 99.99%."
+    }
+  },
+  {
+    id: "sai-software-aero",
+    title: "SAI SOFTWARE",
+    subtitle: "Software de Ingeniería Aeronáutica & Factibilidad Técnica (LAD/LADH)",
+    category: "aero",
+    categoryLabel: "Aeronáutica & Desktop",
+    featured: true,
+    flagship: true,
+    year: "2026",
+    status: "Producción / Desktop Workstation",
+    badge: "Electron • RAAC 153/154 • React 19",
+    gradient: "linear-gradient(135deg, #2563eb, #06b6d4)",
+    accentColor: "#2563eb",
+    image: "assets/images/projects/sai-software.svg",
+    shortDescription:
+      "Suite integral de escritorio para cálculo y auditoría de factibilidad técnica aeronáutica. Automatiza el estudio de pistas LAD (RAAC 153), helipuertos LADH (RAAC 154 / OACI Anexo 14), cálculo de rumbos QFU y rosa de los vientos vectorial de 16 rumbos con persistencia SQLite.",
+    metrics: [
+      { label: "Normativa Base", value: "RAAC 153 / 154" },
+      { label: "Usabilidad OACI", value: "≥ 95% Calculado" },
+      { label: "Rosa de Vientos", value: "16 Rumbos Vector" },
+      { label: "Arquitectura", value: "Electron + React 19" }
+    ],
+    tags: ["Electron", "React 19", "TypeScript", "Tailwind CSS", "SQLite Embebido", "Vite", "Viento Cruzado"],
+    links: {
+      github: "https://github.com/LuchoDB",
+      demo: "#",
+      caseStudy: true
+    },
+    caseStudy: {
+      clientContext:
+        "Los estudios de factibilidad para habilitar pistas y helipuertos demandaban semanas de cálculos manuales de viento cruzado, comprobaciones trigonométricas de rumbos magnéticos QFU y armado artesanal de dossiers para ANAC.",
+      technicalChallenge:
+        "Diseñar un motor matemático riguroso capaz de procesar historiales anemométricos, calcular vientos transversales según envergadura de aeronaves de diseño y generar planos acotados vectoriales imprimibles sin margen de error.",
+      solution:
+        "Desarrollo de una estación de trabajo nativa en Electron con React 19 y TypeScript. Incluye motor de cálculo vectorial para rumbos magnéticos con declinación anual, rosa de vientos interactiva en SVG y arquitectura multi-agente para auditoría normativa.",
+      architecturalHighlights: [
+        "Cálculo automático de rumbos verdaderos, declinación magnética y designador de pista QFU a partir de coordenadas de umbral.",
+        "Rosa de los vientos interactiva con interpolación de frecuencias de viento y factor de usabilidad OACI.",
+        "Generador de dossiers técnicos en alta resolución listos para firma profesional y presentación en ANAC.",
+        "Base de datos SQLite local (node:sqlite) aislada mediante ContextBridge seguro de Electron."
+      ],
+      impact:
+        "Reducción del 90% en el tiempo de emisión de dictámenes de factibilidad aeronáutica con validación matemática infalible."
+    }
+  },
+  {
+    id: "cartografo-aero-gis",
+    title: "CARTÓGRAFO",
+    subtitle: "Motor de Cartografía Aeronáutica, Análisis Geoespacial & Obstáculos (SLO)",
+    category: "aero",
+    categoryLabel: "Aeronáutica & GIS",
+    featured: true,
+    flagship: true,
+    year: "2026",
+    status: "Activo / Misión Crítica",
+    badge: "Cartografía WGS-84 • SLO RAAC",
+    gradient: "linear-gradient(135deg, #059669, #0284c7)",
+    accentColor: "#059669",
+    image: "assets/images/projects/cartografo.svg",
+    shortDescription:
+      "Sistema de información geográfica (GIS) y cartografía aeronáutica especializado en modelado tridimensional de Superficies Limitadoras de Obstáculos (SLO), cartas de aproximación visual y georreferenciación precisa bajo elipsoide WGS-84.",
+    metrics: [
+      { label: "Referencial", value: "Elipsoide WGS-84" },
+      { label: "Superficies", value: "SLO 3D RAAC" },
+      { label: "Modelo Magnético", value: "WMM Integrado" },
+      { label: "Cartas", value: "Aproximación / OACI" }
+    ],
+    tags: ["Cartografía GIS", "WGS-84", "Cálculo Geodésico", "Superficies SLO", "TypeScript", "Modelado 3D"],
+    links: {
+      github: "https://github.com/LuchoDB",
+      demo: "#",
+      caseStudy: true
+    },
+    caseStudy: {
+      clientContext:
+        "La delimitación de servidumbres de paso aeronáutico y el análisis de obstáculos circundantes a un aeródromo o helipuerto requieren precisión milimétrica para evitar infracciones a las áreas críticas de despegue y aproximación.",
+      technicalChallenge:
+        "Proyectar las pendientes reglamentarias de ascenso (2.5%, 3.33%, 5%) y superficies de transición lateral sobre terrenos irregulares con datos topográficos heterogéneos.",
+      solution:
+        "Implementación de algoritmos de geometría esférica y cónica conforme, integrando el elipsoide WGS-84 y modelos de declinación magnética para calcular conos de despeje y verificación de no penetración de obstáculos.",
+      architecturalHighlights: [
+        "Transformación y proyección de coordenadas geodésicas (latitud/longitud decimal, sexagesimal y Gauss-Krüger).",
+        "Trazado vectorial de cartas de aeródromo conforme a especificaciones OACI Anexo 4.",
+        "Detección de penetración en superficies de aproximación, transición y superficie horizontal interna.",
+        "Exportación de planos acotados de deslinde para expedientes de mensura y catastro municipal."
+      ],
+      impact:
+        "Aseguramiento del 100% de cumplimiento en seguridad operacional y despeje de obstáculos en inspecciones de la autoridad aeronáutica."
+    }
+  },
+  {
     id: "cuentaclara-ai",
     title: "CuentaClara AI",
-    subtitle: "Gestión Financiera Inteligente con Visión Artificial y Gemini AI",
+    subtitle: "Gestión Financiera Móvil con Visión Artificial y Gemini Multimodal",
     category: "ai",
-    categoryLabel: "IA & Mobile",
-    featured: true,
+    categoryLabel: "Inteligencia Artificial & Mobile",
+    featured: false,
+    flagship: false,
     year: "2026",
     status: "Activo / Mobile Ready",
     badge: "Gemini Vision + Capacitor",
-    gradient: "linear-gradient(135deg, #0ea5e9, #6366f1)",
-    accentColor: "#0ea5e9",
+    gradient: "linear-gradient(135deg, #6366f1, #0ea5e9)",
+    accentColor: "#6366f1",
     image: "assets/images/projects/cuentaclara.svg",
     shortDescription:
-      "Aplicación móvil para finanzas personales con escaneo automatizado de recibos y facturas mediante modelos multimodales de Google Gemini, sincronización reactiva y soporte nativo en Android.",
+      "Aplicación móvil para administración financiera con escaneo inteligente de recibos y facturas mediante modelos de visión artificial de Google Gemini, salida estructurada sin margen de alucinación y soporte Android nativo con Capacitor 8.",
     metrics: [
-      { label: "Tiempo de Análisis OCR", value: "< 1.2s" },
-      { label: "Precisión en Tickets", value: "98.7%" },
-      { label: "Arquitectura", value: "React 19 + TypeScript" },
-      { label: "Soporte", value: "Android Nativo / PWA" }
+      { label: "Tiempo Análisis OCR", value: "< 1.2s" },
+      { label: "Precisión Tickets", value: "98.7%" },
+      { label: "Framework", value: "React 19 + TS" },
+      { label: "Plataforma", value: "Android / PWA" }
     ],
     tags: ["React 19", "TypeScript", "Google Gemini AI", "Capacitor 8", "Vite", "Android"],
     links: {
@@ -34,116 +170,28 @@ const PROJECTS_DATA = [
     },
     caseStudy: {
       clientContext:
-        "La gestión de gastos tradicional requiere transcripción manual tediosa de comprobantes físicos y digitales, provocando abandono en los usuarios y errores en la categorización contable.",
+        "La transcripción manual de comprobantes físicos genera fricción y errores sistemáticos en la contabilidad personal y de pequeñas empresas.",
       technicalChallenge:
-        "Procesar tickets arrugados, con iluminación deficiente o formatos atípicos directamente desde la cámara del smartphone sin incurrir en latencias elevadas ni sobrecargar el dispositivo móvil.",
+        "Interpretar comprobantes impresos deteriorados o con formatos variables directamente desde la cámara del smartphone con mínima latencia.",
       solution:
-        "Diseño de un pipeline que captura la imagen mediante la API de cámara de Capacitor, la optimiza en memoria y consulta la API multimodal de Google Gemini mediante esquemas de salida estrictos (JSON Schema estructurado), extrayendo fecha, emisor, ítems individuales, impuestos y monto total.",
+        "Pipeline de preprocesamiento de imágenes conectado a Google Gemini AI mediante esquemas JSON tipados para extraer con precisión emisores, fechas, conceptos, impuestos y totales.",
       architecturalHighlights: [
-        "Procesamiento multimodal con @google/genai y salida estructurada sin margen de alucinación.",
-        "Integración nativa con Capacitor para acceso fluido a hardware de cámara y almacenamiento seguro en Android.",
-        "Gestión de estado local reactivo y persistente con sincronización optimista.",
-        "Reglas de calidad de código y análisis estático con Oxlint y TypeScript en modo estricto."
+        "Uso de @google/genai con schemas declarativos estrictos.",
+        "Puente nativo de cámara y almacenamiento seguro mediante Capacitor.",
+        "Análisis de código estricto con Oxlint y TypeScript."
       ],
       impact:
-        "Reducción del 85% en el tiempo de carga de gastos para el usuario final y automatización instantánea de balance mensual categorizado."
-    }
-  },
-  {
-    id: "master-chess-3d",
-    title: "Master Chess 3D",
-    subtitle: "Motor de Ajedrez Tridimensional Web & Android con IA Minimax",
-    category: "graphics",
-    categoryLabel: "Gráficos 3D & Motor",
-    featured: true,
-    year: "2026",
-    status: "Producción / 60 FPS",
-    badge: "Three.js + Minimax AI",
-    gradient: "linear-gradient(135deg, #8b5cf6, #ec4899)",
-    accentColor: "#8b5cf6",
-    image: "assets/images/projects/chess3d.svg",
-    shortDescription:
-      "Juego completo de ajedrez en 3D con renderizado WebGL acelerado por hardware, sombreado PBR fotorrealista, 4 biomas climáticos dinámicos y motor de IA con poda Alpha-Beta.",
-    metrics: [
-      { label: "Tasa de Refresco", value: "60 FPS Estables" },
-      { label: "Profundidad de IA", value: "Minimax + Alpha-Beta" },
-      { label: "Renderizado", value: "WebGL / PBR" },
-      { label: "Entornos Dinámicos", value: "4 Biomas" }
-    ],
-    tags: ["Three.js", "JavaScript ES6+", "Chess.js", "WebGL", "Vite", "Audio Procedural"],
-    links: {
-      github: "https://github.com/LuchoDB",
-      demo: "#",
-      caseStudy: true
-    },
-    caseStudy: {
-      clientContext:
-        "La mayoría de las interfaces de ajedrez en línea son bidimensionales o sufren de bajo rendimiento gráfico en dispositivos móviles y navegadores convencionales.",
-      technicalChallenge:
-        "Lograr renderizado 3D de alta fidelidad (biseles redondeados, texturas de mármol y nogal, efectos de lluvia y partículas climáticas) manteniendo un consumo de batería moderado y 60 FPS fijos en móviles.",
-      solution:
-        "Implementación de geometrías optimizadas en Three.js con materiales MeshStandardMaterial PBR, pipeline de audio posicional y un árbol de decisión Minimax desacoplado para evitar el bloqueo del hilo principal de renderizado.",
-      architecturalHighlights: [
-        "Shader pipeline optimizado para iluminación dinámica (día soleado, crepúsculo, noche estrellada y tormenta con partículas).",
-        "Control de cámara dual: Modo orbital libre y modo fijo 'Player Lock' para máxima ergonomía táctil.",
-        "Algoritmo Minimax configurable en 3 niveles de dificultad con evaluación posicional heurística.",
-        "HUD en Glassmorphism reactivo con cronómetros, historial algebraico formal y promoción de peones."
-      ],
-      impact:
-        "Experiencia inmersiva en WebGL compatible con cualquier navegador moderno sin requerir plugins externos ni descargas adicionales."
-    }
-  },
-  {
-    id: "sai-consult-platform",
-    title: "SAI-Consult Platform",
-    subtitle: "Arquitectura Corporativa Edge de Alto Rendimiento & Serverless",
-    category: "web",
-    categoryLabel: "Fullstack & Cloud",
-    featured: true,
-    year: "2026",
-    status: "Producción / Edge",
-    badge: "Cloudflare Pages + Edge API",
-    gradient: "linear-gradient(135deg, #10b981, #06b6d4)",
-    accentColor: "#10b981",
-    image: "assets/images/projects/sai-consult.svg",
-    shortDescription:
-      "Plataforma digital para consultoría empresarial construida bajo arquitectura Edge-First, logrando puntajes perfectos en Core Web Vitals (Lighthouse 100), seguridad estricta y CDN global.",
-    metrics: [
-      { label: "Puntaje Lighthouse", value: "100 / 100" },
-      { label: "Latencia Global", value: "< 35ms TTFB" },
-      { label: "Infraestructura", value: "Serverless Edge" },
-      { label: "Despliegue", value: "Cloudflare Network" }
-    ],
-    tags: ["Cloudflare Pages", "Wrangler", "Vanilla JS", "Modern CSS", "Edge Network", "SEO Semántico"],
-    links: {
-      github: "https://github.com/LuchoDB",
-      demo: "#",
-      caseStudy: true
-    },
-    caseStudy: {
-      clientContext:
-        "Empresas de servicios corporativos requieren máxima velocidad de carga, disponibilidad global ininterrumpida y posicionamiento orgánico dominante frente a competidores del sector.",
-      technicalChallenge:
-        "Eliminar sobrecargas de frameworks monolíticos que degradan el First Contentful Paint (FCP) y diseñar cabeceras de seguridad CSP rígidas para protección contra XSS e inyecciones.",
-      solution:
-        "Estructuración de una arquitectura Edge distribuida en Cloudflare Pages, minificación de assets, precarga de recursos críticos mediante cabeceras HTTP/2 Server Push y diseño de microcomponentes sin frameworks pesados.",
-      architecturalHighlights: [
-        "Distribución multi-región a través de 300+ puntos de presencia (PoP) de Cloudflare.",
-        "Optimización de Core Web Vitals con Largest Contentful Paint (LCP) inferior a 0.6 segundos.",
-        "Políticas de seguridad estrictas (Content-Security-Policy, HSTS, X-Frame-Options) validadas con grado A+.",
-        "Formularios serverless y métricas analíticas sin cookies respetuosas con la privacidad."
-      ],
-      impact:
-        "Incremento del 60% en retención de visitantes primerizos y reducción del costo de infraestructura a prácticamente cero."
+        "Reducción del 85% en tiempo de carga manual de gastos e integración instantánea con balance mensual."
     }
   },
   {
     id: "python-mastery-lab",
     title: "Python Mastery Lab",
-    subtitle: "Entorno Interactivo de Algoritmia y Análisis de Complejidad",
-    category: "web",
-    categoryLabel: "Fullstack & Cloud",
+    subtitle: "Entorno Interactivo de Algoritmos y Análisis de Complejidad Big-O",
+    category: "cloud",
+    categoryLabel: "Algoritmia & Software",
     featured: false,
+    flagship: false,
     year: "2026",
     status: "Educativo / Activo",
     badge: "Algoritmos & Benchmarks",
@@ -151,14 +199,14 @@ const PROJECTS_DATA = [
     accentColor: "#f59e0b",
     image: "assets/images/projects/python-mastery.svg",
     shortDescription:
-      "Plataforma interactiva para el estudio y visualización paso a paso de estructuras de datos complejas, análisis asintótico Big-O y benchmarks de rendimiento computacional.",
+      "Plataforma interactiva para el estudio y visualización en tiempo real de estructuras de datos complejas (árboles AVL, grafos dirigidos, tablas hash) y evaluación de rendimiento asintótico computacional.",
     metrics: [
-      { label: "Estructuras Soportadas", value: "25+ Tipos" },
-      { label: "Métricas", value: "Tiempo Real Big-O" },
-      { label: "Motor", value: "Vite + Web Workers" },
+      { label: "Estructuras", value: "25+ Tipos" },
+      { label: "Métricas", value: "Big-O Tiempo Real" },
+      { label: "Ejecución", value: "Web Workers" },
       { label: "Licencia", value: "Open Source" }
     ],
-    tags: ["Python", "JavaScript", "Algoritmos", "Estructuras de Datos", "Vite", "Benchmarks"],
+    tags: ["Python", "JavaScript", "Estructuras de Datos", "Algoritmos", "Vite", "Web Workers"],
     links: {
       github: "https://github.com/LuchoDB",
       demo: "#",
@@ -166,43 +214,43 @@ const PROJECTS_DATA = [
     },
     caseStudy: {
       clientContext:
-        "Aprender algoritmos avanzados y estructuras de datos abstractas suele ser difícil cuando solo se cuenta con explicaciones teóricas sin contraste visual dinámico.",
+        "La enseñanza y análisis de algoritmos avanzados requiere una correlación visual inmediata entre la estructura teórica y el coste de CPU/memoria.",
       technicalChallenge:
-        "Simular la ejecución paso a paso de algoritmos (grafos, árboles AVL, ordenamientos) permitiendo pausar, retroceder e inspeccionar punteros en tiempo real.",
+        "Simular pasos de ejecución y rebalanceos arbóreos sin bloquear la tasa de refresco del navegador web.",
       solution:
-        "Creación de un motor visual basado en eventos discretos que traduce el flujo algorítmico a estados renderizables en Canvas SVG/HTML5 con cálculo simultáneo de operaciones elementales.",
+        "Aislamiento de la computación pesada en hilos de Web Workers y renderizado reactivo en Canvas SVG con cómputo de operaciones elementales.",
       architecturalHighlights: [
-        "Aislamiento de la computación pesada en Web Workers para mantener 60 FPS en la interfaz gráfica.",
-        "Visualización interactiva de grafos dirigidos, árboles binarios balanceados y tablas hash.",
-        "Módulo de comparación comparativa de complejidad temporal (O(1), O(n log n), O(n^2)).",
-        "Módulos educativos documentados con buenas prácticas PEP 8 y tipado estático."
+        "Ejecución multi-hilo desacoplada del hilo principal de UI.",
+        "Visualización de árboles balanceados, grafos dirigidos y recorridos Dijkstra/A*.",
+        "Benchmarks comparativos empíricos vs teóricos."
       ],
       impact:
-        "Facilitó la comprensión intuitiva de problemas algorítmicos complejos a más de 300 estudiantes y desarrolladores."
+        "Herramienta adoptada para formación técnica y aceleración del aprendizaje de complejidad algorítmica."
     }
   },
   {
-    id: "nexus-microservices-monitor",
+    id: "nexus-system-telemetry",
     title: "Nexus System Telemetry",
-    subtitle: "Dashboard Reactivo para Monitoreo de Microservicios y APIs",
-    category: "ai",
-    categoryLabel: "Fullstack & DevOps",
+    subtitle: "Dashboard Reactivo para Monitoreo de Microservicios con WebSockets",
+    category: "cloud",
+    categoryLabel: "DevOps & Cloud",
     featured: false,
+    flagship: false,
     year: "2026",
     status: "Open Source",
-    badge: "Observabilidad & Métricas",
+    badge: "Streaming & Observabilidad",
     gradient: "linear-gradient(135deg, #06b6d4, #3b82f6)",
     accentColor: "#06b6d4",
     image: "assets/images/projects/nexus.svg",
     shortDescription:
-      "Panel de control y telemetría de sistemas distribuidos con streaming de eventos por WebSockets, detección de anomalías en latencia y alertas automatizadas.",
+      "Panel de supervisión y telemetría de sistemas distribuidos con streaming continuo por WebSockets, detección estadística de anomalías y latencias en tiempo real.",
     metrics: [
-      { label: "Frecuencia de Muestreo", value: "100ms" },
+      { label: "Frecuencia Muestreo", value: "100ms" },
       { label: "Consumo Memoria", value: "< 28 MB" },
-      { label: "Protocolos", value: "WebSocket / REST" },
+      { label: "Protocolo", value: "WebSockets / REST" },
       { label: "Alertas", value: "Tiempo Real" }
     ],
-    tags: ["TypeScript", "WebSockets", "Node.js", "Tailwind/CSS", "Docker", "DevOps"],
+    tags: ["TypeScript", "WebSockets", "Node.js", "Docker", "DevOps"],
     links: {
       github: "https://github.com/LuchoDB",
       demo: "#",
@@ -210,72 +258,118 @@ const PROJECTS_DATA = [
     },
     caseStudy: {
       clientContext:
-        "La supervisión de microservicios en arquitecturas distribuidas suele depender de herramientas pesadas que consumen excesivos recursos en entornos pequeños o medianos.",
+        "El diagnóstico de latencia y saturación de microservicios requería una interfaz ultraliviana sin consumo desmedido de memoria en estaciones locales.",
       technicalChallenge:
-        "Recibir y graficar miles de eventos por segundo en el navegador sin provocar saturación de recolección de basura (Garbage Collection lag).",
+        "Ingerir miles de métricas concurrentes por segundo sin degradar la tasa de frames de visualización.",
       solution:
-        "Arquitectura basada en buffers circulares y renderizado eficiente en Canvas 2D con suscripción por canales WebSockets comprimidos.",
+        "Buffers circulares tipados y renderizado en Canvas 2D con suscripción por canales binarios comprimidos.",
       architecturalHighlights: [
-        "Uso de ArrayBuffers tipados para serialización y deserialización binaria ultrarrápida.",
-        "Detección predictiva de cuellos de botella basada en ventanas deslizantes de desviación estándar.",
-        "Contenedores Docker listos para desplegar con orquestación simple."
+        "Serialización binaria ultrarrápida con ArrayBuffers.",
+        "Detección predictiva de cuellos de botella con desviación estándar móvil."
       ],
       impact:
-        "Reducción del 40% en el tiempo medio de detección y resolución de incidentes (MTTD/MTTR)."
+        "Reducción sustancial en el tiempo de diagnóstico y visualización de salud de microservicios."
     }
+  }
+];
+
+// Servicios Especializados (Estructura NextGenAppsPro)
+const SERVICES_DATA = [
+  {
+    id: "service-aero",
+    title: "Ingeniería Aeronáutica & Software Técnico",
+    badge: "Normativa RAAC & OACI",
+    description:
+      "Desarrollo de estaciones de trabajo y software de cálculo para factibilidad de pistas LAD (RAAC 153) y helipuertos LADH (RAAC 154 / OACI Anexo 14). Cálculos vectoriales de rumbos magnéticos QFU, estudios de viento cruzado, rosas de vientos de 16 rumbos y emisión de dossiers formales para ANAC y ENACOM.",
+    deliverables: [
+      "Estudios de factibilidad técnica LAD y LADH",
+      "Cálculo de viento cruzado y factor de usabilidad OACI",
+      "Software desktop en Electron con SQLite integrado",
+      "Dossiers técnicos listos para presentación regulatoria"
+    ]
+  },
+  {
+    id: "service-cloud",
+    title: "Arquitectura Cloud Edge & Sistemas de Alto Rendimiento",
+    badge: "Lighthouse 100/100",
+    description:
+      "Diseño de plataformas corporativas desplegadas en la red Edge global (Cloudflare Pages, Workers, CDNs distribuidas). Eliminación de sobrecargas de frameworks para conseguir latencias inferiores a 35ms TTFB, seguridad CSP estricta y cumplimiento absoluto de Core Web Vitals.",
+    deliverables: [
+      "Despliegues Edge-First multi-región en Cloudflare",
+      "Puntuación 100/100 constante en Google Lighthouse",
+      "Políticas rígidas de seguridad (HSTS, CSP, XSS)",
+      "SEO técnico avanzado y marcado estructurado JSON-LD"
+    ]
+  },
+  {
+    id: "service-gis",
+    title: "Cartografía Aeronáutica & Análisis Geoespacial (GIS)",
+    badge: "Elipsoide WGS-84",
+    description:
+      "Sistemas de información geográfica especializados en el trazado de cartas de aproximación visual, modelado tridimensional de Superficies Limitadoras de Obstáculos (SLO) y georreferenciación de umbrales con modelos de declinación magnética global.",
+    deliverables: [
+      "Cartas de aproximación visual conforme OACI Anexo 4",
+      "Evaluación y verificación 3D de obstáculos circundantes",
+      "Georreferenciación precisa en sistemas de coordenadas WGS-84",
+      "Planos de deslinde y servidumbres aeronáuticas"
+    ]
+  },
+  {
+    id: "service-ai",
+    title: "Inteligencia Artificial Multimodal & Aplicaciones Móviles",
+    badge: "Gemini Vision & Capacitor",
+    description:
+      "Creación de aplicaciones multiplataforma para Android y Web que integran capacidades de visión artificial e inteligencia artificial multimodal (Google Gemini API), con esquemas de datos estructurados para automatización de flujos documentales y de negocio.",
+    deliverables: [
+      "Procesamiento multimodal con salida JSON estructurada",
+      "Aplicaciones Android nativas y PWAs con Capacitor",
+      "Arquitecturas reactivas en TypeScript y React 19",
+      "Análisis estático y calidad de código garantizada"
+    ]
   }
 ];
 
 // Stack Tecnológico Organizado por Capas de Ingeniería
 const TECH_STACK = [
   {
+    category: "Ingeniería Aeronáutica & Normativas",
+    icon: "compass",
+    skills: [
+      { name: "RAAC 153 (LAD / Pistas)", level: "Especialista", detail: "Diseño geométrico, márgenes, pendientes longitudinales y transversales" },
+      { name: "RAAC 154 / OACI Anexo 14 (LADH)", level: "Especialista", detail: "FATO, TLOF, áreas de seguridad, superficies de aproximación" },
+      { name: "Cálculo Vectorial QFU & Vientos", level: "Especialista", detail: "Rosas de viento 16 rumbos, coeficiente de usabilidad ≥ 95%" },
+      { name: "Cartografía Aeronáutica WGS-84", level: "Avanzado", detail: "Superficies Limitadoras de Obstáculos (SLO), cartas OACI Anexo 4" }
+    ]
+  },
+  {
     category: "Lenguajes & Paradigmas",
     icon: "code",
     skills: [
-      { name: "TypeScript", level: "Avanzado", detail: "Tipado estricto, genéricos, diseño de contratos" },
-      { name: "JavaScript (ES6+)", level: "Experto", detail: "Asincronía, Web APIs, Event Loop, DOM" },
-      { name: "Python", level: "Avanzado", detail: "Estructuras de datos, algoritmos, scripts de automatización" },
-      { name: "HTML5 Semántico", level: "Experto", detail: "Accesibilidad WCAG AA, SEO técnico, Schema.org" },
-      { name: "CSS3 Moderno", level: "Avanzado", detail: "Variables CSS, Grid, Flexbox, micro-animaciones" }
+      { name: "TypeScript", level: "Avanzado", detail: "Tipado estricto, contratos de datos, modularidad sólida" },
+      { name: "JavaScript (ES6+)", level: "Experto", detail: "Asincronía, Web APIs, Event Loop, micro-optimizaciones" },
+      { name: "Python", level: "Avanzado", detail: "Algoritmia, automatización, análisis numérico y scripts" },
+      { name: "HTML5 Semántico & SEO", level: "Experto", detail: "Accesibilidad WCAG 2.1 AA, Schema.org, metadatos enriquecidos" },
+      { name: "CSS3 Moderno", level: "Avanzado", detail: "Variables CSS, Grid, Flexbox, micro-animaciones fluidas" }
     ]
   },
   {
-    category: "Frontend & UI Engineering",
+    category: "Frontend, Desktop & Mobile",
     icon: "layout",
     skills: [
-      { name: "React 19 / 18", level: "Avanzado", detail: "Hooks personalizados, arquitectura de componentes, Concurrent Mode" },
-      { name: "Three.js / WebGL", level: "Intermedio-Avanzado", detail: "Escenas 3D, cámaras, sombreadores PBR, partículas" },
-      { name: "Vite Toolchain", level: "Experto", detail: "Configuración HMR, optimización de bundles, plugins" },
-      { name: "Responsive & A11y", level: "Experto", detail: "Mobile-first, contraste estricto, navegación por teclado" }
+      { name: "Electron Desktop", level: "Avanzado", detail: "IPC seguro con ContextBridge, empaquetado nativo Windows" },
+      { name: "React 19 / 18", level: "Avanzado", detail: "Componentes funcionales, hooks personalizados, estado reactivo" },
+      { name: "Capacitor 8 / Android", level: "Avanzado", detail: "Puentes nativos de hardware, emulación y testing en dispositivo" },
+      { name: "Tailwind CSS & Design Systems", level: "Avanzado", detail: "Sistemas de diseño escalables, tokens y glassmorphism" }
     ]
   },
   {
-    category: "Mobile & Multiplataforma",
-    icon: "smartphone",
-    skills: [
-      { name: "Capacitor 8", level: "Avanzado", detail: "Puentes nativos Android, plugins de hardware (Cámara, Storage)" },
-      { name: "Android Toolchain", level: "Intermedio", detail: "SDK, Gradle, emuladores y testing en hardware real" },
-      { name: "Progressive Web Apps", level: "Avanzado", detail: "Service Workers, cache offline, manifiestos web" }
-    ]
-  },
-  {
-    category: "IA, APIs & Backend",
-    icon: "cpu",
-    skills: [
-      { name: "Google Gemini API", level: "Avanzado", detail: "Modelos multimodales, structured output JSON, visión" },
-      { name: "Node.js & Express", level: "Intermedio-Avanzado", detail: "Servicios REST, middlewares, gestión asíncrona" },
-      { name: "WebSockets & Event Streams", level: "Avanzado", detail: "Comunicación bidireccional en tiempo real" },
-      { name: "Bases de Datos & SQL", level: "Intermedio", detail: "Modelado relacional, PostgreSQL, SQLite local" }
-    ]
-  },
-  {
-    category: "Cloud, DevOps & Calidad",
+    category: "Cloud, Edge & Bases de Datos",
     icon: "cloud",
     skills: [
-      { name: "Cloudflare Pages & Edge", level: "Avanzado", detail: "Despliegues CDN, Wrangler CLI, headers HTTP seguros" },
-      { name: "Git & GitHub CI/CD", level: "Avanzado", detail: "Flujos trunk-based, code reviews, automatización" },
-      { name: "Linter & Static Analysis", level: "Avanzado", detail: "Oxlint, ESLint, TypeScript Compiler" },
-      { name: "Lighthouse & Core Web Vitals", level: "Experto", detail: "LCP, CLS, INP optimizados para 99+ constante" }
+      { name: "Cloudflare Pages & Edge", level: "Avanzado", detail: "Distribución CDN global, Wrangler, headers de seguridad HTTP" },
+      { name: "SQLite Embebido (node:sqlite)", level: "Avanzado", detail: "Persistencia local, transacciones seguras e indexación" },
+      { name: "Google Gemini Multimodal API", level: "Avanzado", detail: "Structured output JSON, OCR asistido por visión artificial" },
+      { name: "Lighthouse & Core Web Vitals", level: "Experto", detail: "Auditorías de 100/100 en rendimiento, accesibilidad y SEO" }
     ]
   }
 ];
@@ -284,37 +378,38 @@ const TECH_STACK = [
 const ENGINEERING_PHILOSOPHY = [
   {
     number: "01",
-    title: "Arquitectura Orientada a Rendimiento",
-    description: "Cada byte cuenta. Priorizo código eficiente, tiempos de carga inferiores a 1 segundo y experiencias fluidas sin sobrecarga de librerías innecesarias."
+    title: "Rigor Matemático y Cumplimiento Regulatorio",
+    description: "En sistemas aeronáuticos y de ingeniería no hay lugar para la ambigüedad. Cada cálculo de rumbo QFU, usabilidad de viento o despeje de obstáculos se valida contra normativas oficiales (ANAC, OACI)."
   },
   {
     number: "02",
-    title: "Tipado Estricto y Calidad de Código",
-    description: "Uso riguroso de TypeScript y análisis estático para prevenir fallos en tiempo de ejecución, documentar contratos de datos y garantizar mantenibilidad a largo plazo."
+    title: "Rendimiento Extremo sin Dependencias Infladas",
+    description: "Priorizo arquitecturas limpias y código eficiente. Si una solución puede resolverse con JavaScript moderno y CSS nativo en el Edge con carga sub-segundo, evitamos librerías superfluas."
   },
   {
     number: "03",
-    title: "Experiencia de Usuario & Estética Sobria",
-    description: "El software potente debe ser agradable e intuitivo. Cuido la jerarquía visual, la accesibilidad (a11y) y los detalles que marcan la diferencia profesional."
+    title: "Diseño Ergonómico para Operaciones Críticas",
+    description: "Una estación de trabajo profesional debe reducir la fatiga cognitiva. Las rosas de vientos, matrices de datos y esquemas técnicos se diseñan con alta legibilidad y precisión visual."
   },
   {
     number: "04",
-    title: "Innovación Práctica con IA y Nuevas Tecnologías",
-    description: "Integro modelos de IA de última generación (como Gemini Vision) donde aportan valor real de negocio, manteniendo predictibilidad y fiabilidad en las respuestas."
+    title: "Integración Práctica de Inteligencia Artificial",
+    description: "Aprovecho modelos multimodales de última generación (como Gemini Vision) donde aportan automatización real demostrable, utilizando contratos JSON estrictos para garantizar predictibilidad total."
   }
 ];
 
-// Metadatos Globales de Autor
+// Perfil de Autor Formal
 const AUTHOR_PROFILE = {
-  name: "Luciano",
-  handle: "LuchoDB",
-  role: "Desarrollador de Software & Diseñador de Sistemas",
-  location: "Argentina / Remoto Global",
-  email: "luciano.developer@luchodb.dev",
+  fullName: "Luciano Díaz Bertozzi",
+  shortName: "Luciano",
+  monogram: "LDB",
+  role: "Ingeniero de Software & Diseñador de Sistemas Críticos",
+  specialties: "Sistemas Aeronáuticos (RAAC/OACI) • Arquitectura Cloud Edge • Desktop Electron • Fullstack",
+  location: "Argentina / Remoto Internacional",
+  email: "lucianodiazbertozzi@gmail.com",
   github: "https://github.com/LuchoDB",
-  linkedin: "https://linkedin.com/in/luchodb",
-  availability: "Disponible para proyectos de alto impacto y roles de ingeniería",
+  linkedin: "https://linkedin.com/in/lucianodiazbertozzi",
+  availability: "Disponible para proyectos estratégicos de ingeniería, consultoría técnica y sistemas críticos",
   yearsExperience: "4+",
-  projectsCompleted: "15+",
-  coreFocus: "Fullstack, Mobile Nativo/Híbrido, Gráficos WebGL & Soluciones impulsadas por Inteligencia Artificial"
+  lighthouseScore: "100/100"
 };

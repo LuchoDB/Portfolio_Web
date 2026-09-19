@@ -1,13 +1,15 @@
 /**
  * PORTFOLIO WEB - LÓGICA DE INTERFAZ E INTERACCIÓN
- * Coordinado por el Agente Orquestador & UI Specialist
- * Luciano (LuchoDB)
+ * Estilo: NextGenAppsPro (Bootstrap 5 Style)
+ * Autor: Luciano Díaz Bertozzi
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
-  // Referencias DOM Principales
+  // Referencias DOM
+  const flagshipContainer = document.getElementById('flagship-container');
+  const servicesContainer = document.getElementById('services-container');
   const projectsGrid = document.getElementById('projects-grid');
   const filterButtons = document.querySelectorAll('.filter-btn');
   const modalOverlay = document.getElementById('case-study-modal');
@@ -24,13 +26,103 @@ document.addEventListener('DOMContentLoaded', () => {
   const stackContainer = document.getElementById('stack-container');
   const philosophyContainer = document.getElementById('philosophy-container');
 
-  // Asignar año dinámico en footer
+  // Asignar año dinámico
   if (currentYearSpan) {
     currentYearSpan.textContent = new Date().getFullYear();
   }
 
   // =========================================================================
-  // 1. RENDERIZADO DE PROYECTOS Y FILTRADO DINÁMICO
+  // 1. RENDERIZADO DE PROYECTOS FLAGSHIP (SAI CONSULT, SAI SOFT, CARTÓGRAFO)
+  // =========================================================================
+  const renderFlagshipProjects = () => {
+    if (!flagshipContainer || !Array.isArray(PROJECTS_DATA)) return;
+
+    const flagships = PROJECTS_DATA.filter(p => p.flagship === true);
+
+    flagshipContainer.innerHTML = flagships.map((project, idx) => {
+      const metricsHtml = project.metrics && project.metrics.length > 0
+        ? `
+          <div class="flagship-metrics-box">
+            <div class="f-metric-item">
+              <span class="f-metric-lbl">${escapeHtml(project.metrics[0].label)}</span>
+              <span class="f-metric-val">${escapeHtml(project.metrics[0].value)}</span>
+            </div>
+            <div class="f-metric-item">
+              <span class="f-metric-lbl">${escapeHtml(project.metrics[1] ? project.metrics[1].label : 'Categoría')}</span>
+              <span class="f-metric-val">${escapeHtml(project.metrics[1] ? project.metrics[1].value : project.categoryLabel)}</span>
+            </div>
+          </div>
+        `
+        : '';
+
+      const tagsHtml = project.tags
+        ? project.tags.slice(0, 4).map(t => `<span class="f-tag">${escapeHtml(t)}</span>`).join('')
+        : '';
+
+      return `
+        <article class="flagship-card" id="flagship-card-${escapeHtml(project.id)}">
+          <span class="flagship-badge-top">${escapeHtml(project.badge)}</span>
+          <div class="flagship-preview">
+            <img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)}" class="flagship-svg-img" loading="lazy" width="600" height="340" />
+          </div>
+          <div class="flagship-body">
+            <h3 class="flagship-title">${escapeHtml(project.title)}</h3>
+            <h4 class="flagship-subtitle">${escapeHtml(project.subtitle)}</h4>
+            <p class="flagship-desc">${escapeHtml(project.shortDescription)}</p>
+            ${metricsHtml}
+            <div class="flagship-tags-wrap">
+              ${tagsHtml}
+            </div>
+            <div class="flagship-footer">
+              <button type="button" class="btn-open-case" data-project-id="${escapeHtml(project.id)}" id="btn-flagship-${escapeHtml(project.id)}" aria-label="Ver Caso de Estudio de ${escapeHtml(project.title)}">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Caso de Estudio</span>
+              </button>
+              <div class="project-external-links">
+                ${project.links.github ? `
+                  <a href="${escapeHtml(project.links.github)}" target="_blank" rel="noopener noreferrer" class="btn-icon" style="width: 36px; height: 36px;" title="Ver código en GitHub" aria-label="Código fuente de ${escapeHtml(project.title)}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  </a>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+  };
+
+  // =========================================================================
+  // 2. RENDERIZADO DE SERVICIOS ESPECIALIZADOS (NEXTGENAPPSPRO SERVICES)
+  // =========================================================================
+  const renderServices = () => {
+    if (!servicesContainer || !Array.isArray(SERVICES_DATA)) return;
+
+    servicesContainer.innerHTML = SERVICES_DATA.map((srv, idx) => {
+      const deliverablesHtml = srv.deliverables.map(item => `
+        <li class="deliverable-item">
+          <svg class="deliverable-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>${escapeHtml(item)}</span>
+        </li>
+      `).join('');
+
+      return `
+        <article class="service-card" id="service-card-${escapeHtml(srv.id)}">
+          <div class="service-card-top">
+            <h3 class="service-title">${escapeHtml(srv.title)}</h3>
+            <span class="service-badge">${escapeHtml(srv.badge)}</span>
+          </div>
+          <p class="service-desc">${escapeHtml(srv.description)}</p>
+          <ul class="service-deliverables-list">
+            ${deliverablesHtml}
+          </ul>
+        </article>
+      `;
+    }).join('');
+  };
+
+  // =========================================================================
+  // 3. RENDERIZADO DE GALERÍA DE PROYECTOS Y FILTROS
   // =========================================================================
   const renderProjects = (filter = 'all') => {
     if (!projectsGrid || !Array.isArray(PROJECTS_DATA)) return;
@@ -47,7 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
       card.style.animationDelay = `${index * 0.08}s`;
       card.id = `project-card-${project.id}`;
 
-      // Métricas breves (primeras 2 para la tarjeta)
       const miniMetricsHtml = project.metrics && project.metrics.length > 0
         ? `
           <div class="project-metrics-mini">
@@ -63,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `
         : '';
 
-      // Tags
       const tagsHtml = project.tags
         ? project.tags.map(t => `<span class="project-tag">${escapeHtml(t)}</span>`).join('')
         : '';
@@ -93,11 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 </a>
               ` : ''}
-              ${project.links.demo && project.links.demo !== '#' ? `
-                <a href="${escapeHtml(project.links.demo)}" target="_blank" rel="noopener noreferrer" class="project-ext-icon" title="Ver Despliegue en Vivo" aria-label="Demostración en vivo de ${escapeHtml(project.title)}">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
-              ` : ''}
             </div>
           </div>
         </div>
@@ -106,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
       projectsGrid.appendChild(card);
     });
 
-    // Vincular eventos a los nuevos botones de caso de estudio
     attachModalTriggers();
   };
 
@@ -121,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =========================================================================
-  // 2. MODAL DE CASO DE ESTUDIO (ACCESIBILIDAD & NAVEGACIÓN)
+  // 4. MODAL DE CASO DE ESTUDIO (ACCESIBLE & RIGOR TÉCNICO)
   // =========================================================================
   const openModal = (projectId) => {
     const project = PROJECTS_DATA.find(p => p.id === projectId);
@@ -149,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="case-section">
         <h4 class="case-subtitle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          Contexto &amp; Problemática
+          Contexto de Ingeniería &amp; Normativa
         </h4>
         <p class="case-text">${escapeHtml(cs.clientContext)}</p>
       </div>
@@ -157,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="case-section">
         <h4 class="case-subtitle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-          Desafío de Ingeniería
+          Desafío de Arquitectura
         </h4>
         <p class="case-text">${escapeHtml(cs.technicalChallenge)}</p>
       </div>
@@ -165,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="case-section">
         <h4 class="case-subtitle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-          Solución de Arquitectura
+          Solución de Ingeniería
         </h4>
         <p class="case-text">${escapeHtml(cs.solution)}</p>
         <ul class="case-highlights-list">
@@ -174,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
 
       <div class="case-section">
-        <h4 class="case-subtitle">Métricas Técnicas Clave</h4>
+        <h4 class="case-subtitle">Métricas Técnicas de Desempeño</h4>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 10px;">
           ${metricsDetail}
         </div>
@@ -198,9 +282,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const attachModalTriggers = () => {
-    const triggerButtons = document.querySelectorAll('.btn-case-study');
-    triggerButtons.forEach(btn => {
-      btn.addEventListener('click', (e) => {
+    const triggers = document.querySelectorAll('.btn-open-case, .btn-case-study');
+    triggers.forEach(btn => {
+      btn.addEventListener('click', () => {
         const pId = btn.getAttribute('data-project-id');
         if (pId) openModal(pId);
       });
@@ -217,7 +301,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Cerrar con tecla Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
       closeModal();
@@ -225,14 +308,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =========================================================================
-  // 3. RENDERIZADO DEL STACK TECNOLÓGICO Y FILOSOFÍA
+  // 5. RENDERIZADO DEL STACK TECNOLÓGICO Y FILOSOFÍA
   // =========================================================================
   if (stackContainer && Array.isArray(TECH_STACK)) {
     stackContainer.innerHTML = TECH_STACK.map((cat, idx) => `
       <div class="stack-category-card" id="stack-cat-${idx}">
         <div class="stack-cat-header">
           <div class="stack-cat-icon-wrap" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
           </div>
           <h3 class="stack-cat-title">${escapeHtml(cat.category)}</h3>
         </div>
@@ -262,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 4. COPIAR EMAIL CON FEEDBACK TOAST
+  // 6. COPIAR EMAIL CON TOAST
   // =========================================================================
   const showToast = (message) => {
     if (!toastNotice) return;
@@ -280,7 +363,6 @@ document.addEventListener('DOMContentLoaded', () => {
         await navigator.clipboard.writeText(email);
         showToast('¡Correo electrónico copiado al portapapeles!');
       } catch (err) {
-        // Fallback
         const textarea = document.createElement('textarea');
         textarea.value = email;
         document.body.appendChild(textarea);
@@ -293,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 5. NAVEGACIÓN MÓVIL Y SCROLLSPY
+  // 7. NAVEGACIÓN MÓVIL Y SCROLLSPY
   // =========================================================================
   if (mobileMenuToggle && navMenu) {
     mobileMenuToggle.addEventListener('click', () => {
@@ -303,7 +385,6 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenuToggle.setAttribute('aria-expanded', (!expanded).toString());
     });
 
-    // Cerrar menú móvil al hacer clic en un enlace
     navMenu.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenuToggle.classList.remove('active');
@@ -313,7 +394,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Indicador de enlace activo según scroll (Scrollspy)
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
 
@@ -321,7 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollY = window.pageYOffset;
     sections.forEach(current => {
       const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 120;
+      const sectionTop = current.offsetTop - 130;
       const sectionId = current.getAttribute('id');
 
       if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
@@ -338,9 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // =========================================================================
-  // 6. FORMULARIO DE CONTACTO EN CLIENTE
-  // =========================================================================
+  // Formulario
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -350,7 +428,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Utilidad de sanitización para prevenir inyecciones
   function escapeHtml(text) {
     if (typeof text !== 'string') return text;
     return text
@@ -361,6 +438,8 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/'/g, '&#039;');
   }
 
-  // Render inicial de proyectos
+  // Inicialización
+  renderFlagshipProjects();
+  renderServices();
   renderProjects('all');
 });
