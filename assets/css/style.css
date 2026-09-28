@@ -963,6 +963,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  overflow: hidden;
 }
 
 .service-card:hover {
@@ -977,6 +978,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 14px;
+  flex-wrap: wrap;
 }
 
 .service-title {
@@ -984,6 +986,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: var(--text-headline);
   line-height: 1.35;
+  flex: 1 1 160px;
 }
 
 .service-badge {
@@ -993,9 +996,11 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--primary-accent);
   background: rgba(79, 70, 229, 0.08);
   border: 1px solid rgba(79, 70, 229, 0.2);
-  padding: 3px 8px;
+  padding: 3px 10px;
   border-radius: var(--radius-full);
   white-space: nowrap;
+  flex-shrink: 0;
+  max-width: 100%;
 }
 
 .service-desc {
@@ -1128,13 +1133,15 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 12px;
   right: 12px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(16, 185, 129, 0.35);
   color: #047857;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: var(--radius-full);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .project-body {

@@ -322,7 +322,7 @@ const SERVICES_DATA = [
   {
     id: "service-ai",
     title: "Integración de IA & Aplicaciones Prácticas",
-    badge: "Inteligencia Artificial Práctica",
+    badge: "IA Práctica",
     description:
       "Implementación de funciones inteligentes en aplicaciones web y móviles, tales como análisis automático de documentos, procesamiento visual de imágenes y automatización de tareas cotidianas.",
     deliverables: [
