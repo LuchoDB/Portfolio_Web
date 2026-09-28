@@ -2236,7 +2236,7 @@ body.nav-open {
 
   /* Margen inferior para que ningún contenido quede tapado por el dock */
   body {
-    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
   }
 
   /* =========================================================================
@@ -2417,6 +2417,24 @@ body.nav-open {
 
   .project-body {
     padding: 18px;
+  }
+
+  .contact-wrapper {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: var(--radius-lg);
+  }
+
+  .contact-form {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-form .btn-primary {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
   }
 
   .toast-notice {
