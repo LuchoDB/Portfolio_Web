@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyWhatsappBtn = document.getElementById('btn-copy-whatsapp');
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
   const navMenu = document.getElementById('nav-menu');
+  const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
   const currentYearSpan = document.getElementById('current-year');
   const stackContainer = document.getElementById('stack-container');
   const philosophyContainer = document.getElementById('philosophy-container');
@@ -403,39 +404,73 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // 7. NAVEGACIÓN MÓVIL Y SCROLLSPY
   // =========================================================================
+  const closeMobileMenu = () => {
+    if (!mobileMenuToggle || !navMenu) return;
+    mobileMenuToggle.classList.remove('active');
+    navMenu.classList.remove('mobile-active');
+    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    if (mobileNavBackdrop) mobileNavBackdrop.classList.remove('active');
+    document.body.classList.remove('nav-open');
+  };
+
+  const openMobileMenu = () => {
+    if (!mobileMenuToggle || !navMenu) return;
+    mobileMenuToggle.classList.add('active');
+    navMenu.classList.add('mobile-active');
+    mobileMenuToggle.setAttribute('aria-expanded', 'true');
+    if (mobileNavBackdrop) mobileNavBackdrop.classList.add('active');
+    document.body.classList.add('nav-open');
+  };
+
   if (mobileMenuToggle && navMenu) {
     mobileMenuToggle.addEventListener('click', () => {
-      mobileMenuToggle.classList.toggle('active');
-      navMenu.classList.toggle('mobile-active');
-      const expanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
-      mobileMenuToggle.setAttribute('aria-expanded', (!expanded).toString());
+      const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
     });
 
-    navMenu.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenuToggle.classList.remove('active');
-        navMenu.classList.remove('mobile-active');
-        mobileMenuToggle.setAttribute('aria-expanded', 'false');
-      });
+    if (mobileNavBackdrop) {
+      mobileNavBackdrop.addEventListener('click', closeMobileMenu);
+    }
+
+    navMenu.querySelectorAll('.nav-link, a').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMobileMenu();
+      }
     });
   }
 
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
+  const mobLinks = document.querySelectorAll('.mobile-bar-item[href^="#"]');
 
   const onScroll = () => {
     const scrollY = window.pageYOffset;
     sections.forEach(current => {
       const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 130;
+      const sectionTop = current.offsetTop - 140;
       const sectionId = current.getAttribute('id');
 
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
         navLinks.forEach(link => {
           if (link.getAttribute('href') === `#${sectionId}`) {
             link.classList.add('active');
           } else {
             link.classList.remove('active');
+          }
+        });
+        mobLinks.forEach(item => {
+          if (item.getAttribute('href') === `#${sectionId}`) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
           }
         });
       }

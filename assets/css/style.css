@@ -16,6 +16,7 @@
   --primary-hover: #4338ca;
   --secondary-accent: #6366f1;     /* Violet Electric para gradientes */
   --secondary-light: #818cf8;
+  --accent-blue: #4f46e5;
 
   /* Escala Neutral */
   --text-headline: #09090b;        /* Headline Black */
@@ -68,12 +69,14 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 85px;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -435,14 +438,49 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--bg-inset);
 }
 
+.header-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #15803d;
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  transition: all var(--transition-fast);
+}
+
+.header-whatsapp-btn:hover {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.header-whatsapp-btn:hover svg {
+  fill: #ffffff;
+}
+
 .mobile-toggle {
   display: none;
   background: none;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
-  padding: 8px;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-DEFAULT);
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 5px;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.mobile-toggle:hover,
+.mobile-toggle:focus-visible {
+  background-color: var(--bg-inset);
+  border-color: var(--border-hairline);
 }
 
 .mobile-toggle span {
@@ -451,7 +489,62 @@ h1, h2, h3, h4, h5, h6 {
   height: 2px;
   background: var(--text-headline);
   border-radius: 2px;
-  transition: all var(--transition-fast);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  transform-origin: center;
+}
+
+/* Transformación fluida a icono de cierre 'X' */
+.mobile-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Telón de fondo móvil con desenfoque */
+.mobile-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.mobile-nav-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body.nav-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* Footer del drawer móvil */
+.mobile-drawer-footer {
+  display: none;
+}
+
+/* Barra inferior móvil (Dock táctil estilo iOS/Android) */
+.mobile-bottom-bar {
+  display: none;
+}
+
+/* Indicador de arrastre estilo bottom-sheet modal */
+.modal-drag-handle {
+  display: none;
 }
 
 /* ==========================================================================
@@ -1882,78 +1975,489 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   RESPONSIVIDAD
+   RESPONSIVIDAD Y CONTROLES MÓVILES (iOS & Android Native Guidelines)
+   Agente Senior de Diseño Responsive & UX/UI Mobile
    ========================================================================== */
+
+/* 1. Laptops y Pantallas Medianas (<= 1024px) */
 @media (max-width: 1024px) {
   .hero-layout-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
+
   .hero-main-title {
-    font-size: 42px;
-    line-height: 50px;
+    font-size: clamp(36px, 5vw, 48px);
+    line-height: 1.15;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
   }
 }
 
+/* 2. Tablets y Pantallas Angostas (<= 860px) */
 @media (max-width: 860px) {
   .contact-wrapper {
     grid-template-columns: 1fr;
-    padding: 28px;
+    padding: 24px;
+    gap: 28px;
+  }
+
+  /* Ocultar CTA de texto en el header para evitar saturación */
+  #header-cta-btn {
+    display: none;
   }
 }
 
+/* 3. Smartphones y Tablets en Vertical (<= 768px - Core Mobile Experience) */
 @media (max-width: 768px) {
-  .nav-menu {
-    position: fixed;
-    top: 72px;
-    left: 0;
-    width: 100%;
-    background: var(--bg-surface);
-    box-shadow: var(--shadow-lift);
-    flex-direction: column;
-    padding: 28px 20px;
-    gap: 14px;
-    border-bottom: 1px solid var(--border-hairline);
-    transform: translateY(-120%);
-    transition: transform var(--transition-normal);
-    z-index: 99;
+  /* Contenedor adaptado a márgenes táctiles */
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
-  .nav-menu.mobile-active {
-    transform: translateY(0);
+  /* Altura de cabecera y safe area */
+  .site-header {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .nav-container {
+    height: 64px;
+  }
+
+  .header-actions {
+    gap: 8px;
   }
 
   .mobile-toggle {
     display: flex;
   }
 
-  .hero-section {
-    padding: 36px 0;
+  /* Menú desplegable estilo Top Sheet / Drawer nativo */
+  .nav-menu {
+    position: fixed;
+    top: calc(64px + env(safe-area-inset-top, 0px));
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: calc(100vh - 64px - env(safe-area-inset-top, 0px));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 20px calc(28px + env(safe-area-inset-bottom, 0px));
+    gap: 6px;
+    border-bottom: 1px solid var(--border-hairline);
+    transform: translateY(-115%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.3s ease;
+    z-index: 999;
   }
 
-  .hero-main-title {
-    font-size: 36px;
-    line-height: 44px;
-    letter-spacing: -0.025em;
+  .nav-menu.mobile-active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
-  .section-main-heading {
-    font-size: 26px;
-    line-height: 34px;
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 13px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    color: var(--text-headline);
+    background: transparent;
+    border: 1px solid transparent;
+    min-height: 48px; /* Material Design & iOS Touch Target >= 48px */
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .hero-quick-stats {
-    gap: 20px;
-    flex-wrap: wrap;
+  .nav-link:active,
+  .nav-link.active {
+    background-color: rgba(79, 70, 229, 0.08);
+    color: var(--primary-accent);
+    border-color: rgba(79, 70, 229, 0.15);
   }
 
-  .floating-badge {
-    position: static;
-    margin-top: 8px;
-    display: inline-flex;
+  .mobile-drawer-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-hairline);
+  }
+
+  /* =========================================================================
+     DOCK INFERIOR ERGONÓMICO (Mobile Bottom Navigation Bar)
+     Diseñado específicamente para pulgares en iOS & Android
+     ========================================================================= */
+  .mobile-bottom-bar {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 950;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(228, 228, 231, 0.9);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+    padding-bottom: max(6px, env(safe-area-inset-bottom, 6px));
+    touch-action: pan-x pan-y;
+  }
+
+  .mobile-bar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex: 1 1 0;
+    min-width: 48px;
+    height: 52px;
+    padding: 4px 2px;
+    border-radius: var(--radius-md);
+    color: var(--text-tertiary);
+    text-decoration: none;
+    font-size: 10.5px;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    transition: color var(--transition-fast), transform 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .mobile-bar-item:active {
+    transform: scale(0.92);
+  }
+
+  .mobile-bar-item.active {
+    color: var(--primary-accent);
+  }
+
+  .mob-bar-icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2px;
+    stroke: currentColor;
+    fill: none;
+    transition: stroke var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .mobile-bar-item.active .mob-bar-icon {
+    stroke: var(--primary-accent);
+    stroke-width: 2.2px;
+    transform: translateY(-1px);
+  }
+
+  /* Botón de acción flotante destacado en el centro del dock: WhatsApp */
+  .mobile-bar-item.mobile-bar-whatsapp {
+    position: relative;
+    top: -10px;
+  }
+
+  .mob-whatsapp-bubble {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #25d366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.45);
+    border: 3px solid #ffffff;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+  }
+
+  .mobile-bar-item.mobile-bar-whatsapp:active .mob-whatsapp-bubble {
+    transform: scale(0.88);
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+  }
+
+  .mobile-bar-item.mobile-bar-whatsapp span {
+    color: #059669;
+    font-weight: 700;
+    margin-top: 1px;
+    font-size: 10px;
+  }
+
+  /* Ocultar botón flotante de escritorio para no colisionar con el Dock */
+  .floating-whatsapp-btn {
+    display: none !important;
+  }
+
+  /* Margen inferior para que ningún contenido quede tapado por el dock */
+  body {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* =========================================================================
+     MODAL BOTTOM-SHEET NATIVO (Mobile Bottom Sheet Pattern)
+     ========================================================================= */
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-content {
+    border-radius: 24px 24px 0 0;
+    max-height: 86vh;
+    width: 100%;
+    max-width: 100%;
+    border-bottom: none;
+    transform: translateY(100%);
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .modal-overlay.active .modal-content {
+    transform: translateY(0);
+  }
+
+  .modal-drag-handle {
+    display: block;
+    width: 44px;
+    height: 5px;
+    background: #cbd5e1;
+    border-radius: 9999px;
+    margin: 12px auto 4px auto;
+  }
+
+  .modal-header {
+    padding: 14px 20px;
   }
 
   .modal-body {
+    padding: 18px 20px 24px;
+  }
+
+  .modal-close-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* =========================================================================
+     CONTROLES DE FORMULARIO E INTERACCIÓN TÁCTIL (iOS & Android)
+     ========================================================================= */
+  /* Prevención de zoom automático molesto en Safari iOS al enfocar */
+  .form-input,
+  .form-textarea,
+  .form-select,
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  .form-input,
+  .form-textarea {
+    min-height: 48px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-whatsapp {
+    min-height: 48px;
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+
+  /* =========================================================================
+     SWIPE HORIZONTAL PARA CHIPS DE FILTRO (Native Filter Tabs)
+     ========================================================================= */
+  .filter-tabs-wrapper {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    scrollbar-width: none;
+  }
+
+  .filter-tabs-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-tabs {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    padding: 4px;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    flex-shrink: 0;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* =========================================================================
+     AJUSTES DE CONTENIDO Y TIPOGRAFÍA FLUIDA
+     ========================================================================= */
+  .hero-section {
+    padding: 28px 0 36px;
+  }
+
+  .hero-main-title {
+    font-size: clamp(28px, 6.5vw, 40px);
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+  }
+
+  .hero-lead-text {
+    font-size: 15px;
+    line-height: 24px;
+    margin-bottom: 24px;
+  }
+
+  .section-main-heading {
+    font-size: clamp(24px, 5.5vw, 30px);
+    line-height: 1.25;
+  }
+
+  .section-sub-desc {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .hero-quick-stats {
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .flagship-card {
+    border-radius: var(--radius-lg);
+  }
+
+  .flagship-body {
     padding: 20px;
+  }
+
+  .flagship-title {
+    font-size: 20px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .service-card {
+    padding: 20px;
+    border-radius: var(--radius-lg);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .project-card {
+    border-radius: var(--radius-lg);
+  }
+
+  .project-body {
+    padding: 18px;
+  }
+
+  .toast-notice {
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: calc(100% - 32px);
+    justify-content: center;
+  }
+}
+
+/* 4. Teléfonos Compactos (<= 480px) */
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-quick-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .stat-card {
+    padding: 12px 14px;
+  }
+
+  .flagship-metrics-box {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .brand-name {
+    font-size: 14px;
+  }
+
+  .brand-sub {
+    font-size: 10px;
+  }
+
+  .footer-content,
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .contact-channel-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* 5. Optimización especial para dispositivos táctiles puros */
+@media (hover: none) and (pointer: coarse) {
+  a, button, input, select, textarea, .filter-btn, .mobile-bar-item {
+    touch-action: manipulation;
   }
 }
