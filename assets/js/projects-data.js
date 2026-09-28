@@ -1,30 +1,170 @@
 /**
- * Base de Datos Estructurada de Proyectos y Casos de Estudio
- * Arquitectura de Información diseñada por el Agente de Contenidos & Copywriting
- * Autor: Luciano (LuchoDB)
+ * Base de Datos Estructurada de Proyectos, Servicios y Casos de Estudio
+ * Autor: Luciano Díaz Bertozzi
+ * Perfil: Desarrollador de Software
+ * Especialidad: Aplicaciones de Escritorio (Desktop), Desarrollo Web Moderno & Soluciones Digitales
  */
 
 const PROJECTS_DATA = [
   {
+    id: "sai-software",
+    title: "SAI SOFTWARE",
+    subtitle: "Estación de Trabajo Desktop para Cálculos Vectoriales & Análisis Numérico",
+    category: "desktop",
+    categoryLabel: "Desktop & Algoritmia",
+    featured: true,
+    flagship: true,
+    year: "2026",
+    status: "Producción / Desktop Workstation",
+    badge: "Electron • React 19 • TypeScript",
+    gradient: "linear-gradient(135deg, #2563eb, #06b6d4)",
+    accentColor: "#2563eb",
+    image: "assets/images/projects/sai-software.svg",
+    shortDescription:
+      "Estación de trabajo de escritorio desarrollada con Electron, React 19 y TypeScript. Implementa un motor de cálculo vectorial de alta precisión para orientación azimutal, descomposición de magnitudes y rosa de rumbos interactiva, con almacenamiento local estructurado en SQLite embebido.",
+    metrics: [
+      { label: "Arquitectura", value: "Electron + React 19" },
+      { label: "Base de Datos", value: "SQLite Embebido" },
+      { label: "Motor Numérico", value: "Cálculo Vectorial 2D" },
+      { label: "Tipo de App", value: "Desktop Offline-First" }
+    ],
+    tags: ["Electron", "React 19", "TypeScript", "Tailwind CSS", "SQLite", "Vite", "Cálculo Vectorial"],
+    links: {
+      github: "https://github.com/LuchoDB/SAI_Software.git",
+      demo: "#",
+      caseStudy: true
+    },
+    caseStudy: {
+      clientContext:
+        "Necesidad de una herramienta de escritorio offline-first, segura y de alto rendimiento que permita realizar cálculos numéricos y vectoriales complejos, procesar historiales de datos y generar reportes técnicos estructurados con respuesta en tiempo real.",
+      technicalChallenge:
+        "Gestionar cómputos trigonométricos de orientación y distribución angular con latencia imperceptible en una interfaz moderna y reactiva, aislando de forma segura el acceso a disco y base de datos local sin comprometer el hilo de renderizado.",
+      solution:
+        "Arquitectura desktop desacoplada en procesos Main y Renderer mediante IPC fuertemente tipado con ContextBridge. Motor de interfaz en React 19 y TypeScript, visualización gráfica en SVG dinámico y persistencia relacional transaccional en SQLite embebido.",
+      architecturalHighlights: [
+        "Aislamiento de seguridad total en Electron mediante IPC tipado con ContextBridge.",
+        "Motor de cálculo trigonométrico para orientación azimutal y descomposición de componentes ortogonales.",
+        "Rosa direccional interactiva vectorizada en SVG con interpolación reactiva de frecuencias.",
+        "Base de datos SQLite local para almacenamiento transaccional rápido, confiable y sin conexión a internet.",
+        "Exportación estructurada de resultados técnicos para auditoría y archivo digital."
+      ],
+      impact:
+        "Herramienta de escritorio ágil, confiable y con respuesta inmediata para análisis numérico y generación técnica, optimizando tiempos de cálculo en un 90%."
+    }
+  },
+  {
+    id: "sai-consult",
+    title: "SAI CONSULT",
+    subtitle: "Plataforma Web Corporativa Edge-First con Rendimiento Extremo",
+    category: "web",
+    categoryLabel: "Desarrollo Web & Cloud",
+    featured: true,
+    flagship: true,
+    year: "2026",
+    status: "Producción / Edge Global",
+    badge: "Cloudflare Pages • Lighthouse 100/100",
+    gradient: "linear-gradient(135deg, #0ea5e9, #10b981)",
+    accentColor: "#0ea5e9",
+    image: "assets/images/projects/sai-consult.svg",
+    shortDescription:
+      "Plataforma web de presentación corporativa desplegada globalmente en Cloudflare Pages. Diseñada con enfoque de rendimiento extremo, logrando métricas perfectas en Core Web Vitals (Lighthouse 100/100), cabeceras de seguridad avanzadas y arquitectura semántica accesible.",
+    metrics: [
+      { label: "Puntaje Lighthouse", value: "100 / 100" },
+      { label: "Latencia Global", value: "< 35ms TTFB" },
+      { label: "Infraestructura", value: "Cloudflare Edge" },
+      { label: "Accesibilidad", value: "WCAG 2.1 AA" }
+    ],
+    tags: ["Cloudflare Pages", "Vanilla JS", "Modern CSS", "Seguridad CSP", "SEO Semántico", "Lighthouse 100"],
+    links: {
+      github: "https://github.com/LuchoDB/SAI-Consult.git",
+      demo: "#",
+      caseStudy: true
+    },
+    caseStudy: {
+      clientContext:
+        "Desarrollo de un portal web institucional moderno, veloz y seguro para consultoría técnica, diseñado para transmitir máxima sobriedad y profesionalismo con tiempos de carga instantáneos en cualquier dispositivo.",
+      technicalChallenge:
+        "Alcanzar 100/100 incondicional en las cuatro categorías de Google Lighthouse (Rendimiento, Accesibilidad, Buenas Prácticas y SEO), manteniendo una estética elegante y eliminando librerías pesadas o scripts bloqueantes.",
+      solution:
+        "Arquitectura ligera desplegada en los más de 300 puntos de presencia (PoPs) de Cloudflare, con marcado semántico HTML5 puro, CSS moderno optimizado sin frameworks sobredimensionados y JavaScript modular de ejecución diferida.",
+      architecturalHighlights: [
+        "Distribución global en la red Edge de Cloudflare logrando Time To First Byte (TTFB) inferior a 35ms.",
+        "Largest Contentful Paint (LCP) y First Contentful Paint (FCP) inferiores a 0.5 segundos.",
+        "Cabeceras de seguridad HTTP de grado A+ (Content-Security-Policy, HSTS, X-Frame-Options).",
+        "Diseño adaptativo Mobile-First con accesibilidad y contraste tipográfico verificado (WCAG 2.1 AA).",
+        "Marcado estructurado JSON-LD para indexación y posicionamiento orgánico en motores de búsqueda."
+      ],
+      impact:
+        "Sitio web corporativo de referencia con velocidad de carga inmediata, disponibilidad ininterrumpida y 100% de cumplimiento en estándares web modernos."
+    }
+  },
+  {
+    id: "cartografo",
+    title: "CARTÓGRAFO",
+    subtitle: "Plataforma de Cartografía Viva de Software, Análisis Estático y Onboarding Inteligente",
+    category: "ai",
+    categoryLabel: "Tooling de Software & IA",
+    featured: true,
+    flagship: true,
+    year: "2026",
+    status: "Producción / Open Source",
+    badge: "Next.js 16 • Cero Alucinaciones",
+    gradient: "linear-gradient(135deg, #0ea5e9, #6366f1)",
+    accentColor: "#0ea5e9",
+    image: "assets/images/projects/cartografo.svg",
+    shortDescription:
+      "Herramienta avanzada para comprender arquitecturas de software complejas en horas en vez de meses. Ingesta repositorios vía GitHub o ZIP y genera grafos interactivos de dependencias, flujos lógicos reconstruidos paso a paso, modelos entidad-relación (ERD) y guías de onboarding gobernadas por 9 agentes de IA y el principio de Cero Alucinaciones.",
+    metrics: [
+      { label: "Tiempo Onboarding", value: "Horas vs Meses" },
+      { label: "Principio Base", value: "Cero Alucinaciones" },
+      { label: "Sistema de Agentes", value: "9 Agentes IA" },
+      { label: "Stack Tecnológico", value: "Next.js 16 + React 19" }
+    ],
+    tags: ["Next.js 16", "React 19", "TypeScript 5.7", "Tailwind CSS v4", "Multi-Agente", "Análisis Estático", "GitHub Pages"],
+    links: {
+      github: "https://github.com/LuchoDB/Cartografo.git",
+      demo: "https://luchodb.github.io/Cartografo/",
+      caseStudy: true
+    },
+    caseStudy: {
+      clientContext:
+        "Incorporarse a bases de código complejas y proyectos de gran envergadura suele demandar semanas de arqueología de software, navegando código escasamente documentado, dependencias cruzadas y flujos de datos dispersos.",
+      technicalChallenge:
+        "Automatizar la comprensión profunda de repositorios sin incurrir en alucinaciones por parte de modelos generativos, asegurando que cada diagnóstico arquitectónico esté estrictamente respaldado por evidencia en el código fuente.",
+      solution:
+        "Desarrollo de Cartógrafo con Next.js 16 y React 19. El sistema procesa bases de código mediante análisis estático y orquesta 9 agentes especializados bajo el principio de Cero Alucinaciones, distinguiendo con rigor hechos detectados de hipótesis inferidas.",
+      architecturalHighlights: [
+        "Orquestador multi-agente que sintetiza el conocimiento de 9 agentes (Explorador, Arquitectura, Flujos, BD/ERD, Riesgos/CVE).",
+        "Generación reactiva de grafos de arquitectura y dependencias con renderizado veloz con Tailwind CSS v4.",
+        "Tours interactivos de onboarding técnico adaptados al nivel del desarrollador.",
+        "Matriz de riesgos, vulnerabilidades y deuda técnica priorizada con enlaces directos a archivos y líneas de código.",
+        "Despliegue automatizado en GitHub Pages con pipeline de CI/CD vía GitHub Actions."
+      ],
+      impact:
+        "Reducción sustancial del tiempo de familiarización con sistemas complejos de meses a pocas horas, facilitando la colaboración y el mantenimiento de software."
+    }
+  },
+  {
     id: "cuentaclara-ai",
     title: "CuentaClara AI",
-    subtitle: "Gestión Financiera Inteligente con Visión Artificial y Gemini AI",
+    subtitle: "Gestión Financiera Móvil con Visión Artificial y Modelos Multimodales",
     category: "ai",
-    categoryLabel: "IA & Mobile",
-    featured: true,
+    categoryLabel: "Inteligencia Artificial & Mobile",
+    featured: false,
+    flagship: false,
     year: "2026",
     status: "Activo / Mobile Ready",
     badge: "Gemini Vision + Capacitor",
-    gradient: "linear-gradient(135deg, #0ea5e9, #6366f1)",
-    accentColor: "#0ea5e9",
+    gradient: "linear-gradient(135deg, #6366f1, #0ea5e9)",
+    accentColor: "#6366f1",
     image: "assets/images/projects/cuentaclara.svg",
     shortDescription:
-      "Aplicación móvil para finanzas personales con escaneo automatizado de recibos y facturas mediante modelos multimodales de Google Gemini, sincronización reactiva y soporte nativo en Android.",
+      "Aplicación móvil para administración financiera personal con escaneo inteligente de tickets y comprobantes mediante modelos multimodales de Google Gemini, extracción estructurada en JSON tipado y soporte para Android con Capacitor 8.",
     metrics: [
-      { label: "Tiempo de Análisis OCR", value: "< 1.2s" },
-      { label: "Precisión en Tickets", value: "98.7%" },
-      { label: "Arquitectura", value: "React 19 + TypeScript" },
-      { label: "Soporte", value: "Android Nativo / PWA" }
+      { label: "Tiempo Análisis OCR", value: "< 1.2s" },
+      { label: "Precisión Tickets", value: "98.7%" },
+      { label: "Framework", value: "React 19 + TS" },
+      { label: "Plataforma", value: "Android / PWA" }
     ],
     tags: ["React 19", "TypeScript", "Google Gemini AI", "Capacitor 8", "Vite", "Android"],
     links: {
@@ -34,116 +174,28 @@ const PROJECTS_DATA = [
     },
     caseStudy: {
       clientContext:
-        "La gestión de gastos tradicional requiere transcripción manual tediosa de comprobantes físicos y digitales, provocando abandono en los usuarios y errores en la categorización contable.",
+        "La transcripción manual de comprobantes físicos genera fricción y omisiones frecuentes en la administración de gastos personales o de microemprendimientos.",
       technicalChallenge:
-        "Procesar tickets arrugados, con iluminación deficiente o formatos atípicos directamente desde la cámara del smartphone sin incurrir en latencias elevadas ni sobrecargar el dispositivo móvil.",
+        "Interpretar imágenes de comprobantes con calidad variable directamente desde la cámara de un smartphone con mínima latencia y precisión confiable.",
       solution:
-        "Diseño de un pipeline que captura la imagen mediante la API de cámara de Capacitor, la optimiza en memoria y consulta la API multimodal de Google Gemini mediante esquemas de salida estrictos (JSON Schema estructurado), extrayendo fecha, emisor, ítems individuales, impuestos y monto total.",
+        "Canal de procesamiento conectado a la API de Gemini mediante esquemas JSON tipados y estrictos para extraer emisores, fechas, conceptos, impuestos y montos totales de forma limpia.",
       architecturalHighlights: [
-        "Procesamiento multimodal con @google/genai y salida estructurada sin margen de alucinación.",
-        "Integración nativa con Capacitor para acceso fluido a hardware de cámara y almacenamiento seguro en Android.",
-        "Gestión de estado local reactivo y persistente con sincronización optimista.",
-        "Reglas de calidad de código y análisis estático con Oxlint y TypeScript en modo estricto."
+        "Uso del SDK oficial @google/genai con validación de esquemas tipados.",
+        "Puente nativo para acceso a cámara y persistencia local mediante Capacitor.",
+        "Análisis y calidad de código con Oxlint y TypeScript en modo estricto."
       ],
       impact:
-        "Reducción del 85% en el tiempo de carga de gastos para el usuario final y automatización instantánea de balance mensual categorizado."
-    }
-  },
-  {
-    id: "master-chess-3d",
-    title: "Master Chess 3D",
-    subtitle: "Motor de Ajedrez Tridimensional Web & Android con IA Minimax",
-    category: "graphics",
-    categoryLabel: "Gráficos 3D & Motor",
-    featured: true,
-    year: "2026",
-    status: "Producción / 60 FPS",
-    badge: "Three.js + Minimax AI",
-    gradient: "linear-gradient(135deg, #8b5cf6, #ec4899)",
-    accentColor: "#8b5cf6",
-    image: "assets/images/projects/chess3d.svg",
-    shortDescription:
-      "Juego completo de ajedrez en 3D con renderizado WebGL acelerado por hardware, sombreado PBR fotorrealista, 4 biomas climáticos dinámicos y motor de IA con poda Alpha-Beta.",
-    metrics: [
-      { label: "Tasa de Refresco", value: "60 FPS Estables" },
-      { label: "Profundidad de IA", value: "Minimax + Alpha-Beta" },
-      { label: "Renderizado", value: "WebGL / PBR" },
-      { label: "Entornos Dinámicos", value: "4 Biomas" }
-    ],
-    tags: ["Three.js", "JavaScript ES6+", "Chess.js", "WebGL", "Vite", "Audio Procedural"],
-    links: {
-      github: "https://github.com/LuchoDB",
-      demo: "#",
-      caseStudy: true
-    },
-    caseStudy: {
-      clientContext:
-        "La mayoría de las interfaces de ajedrez en línea son bidimensionales o sufren de bajo rendimiento gráfico en dispositivos móviles y navegadores convencionales.",
-      technicalChallenge:
-        "Lograr renderizado 3D de alta fidelidad (biseles redondeados, texturas de mármol y nogal, efectos de lluvia y partículas climáticas) manteniendo un consumo de batería moderado y 60 FPS fijos en móviles.",
-      solution:
-        "Implementación de geometrías optimizadas en Three.js con materiales MeshStandardMaterial PBR, pipeline de audio posicional y un árbol de decisión Minimax desacoplado para evitar el bloqueo del hilo principal de renderizado.",
-      architecturalHighlights: [
-        "Shader pipeline optimizado para iluminación dinámica (día soleado, crepúsculo, noche estrellada y tormenta con partículas).",
-        "Control de cámara dual: Modo orbital libre y modo fijo 'Player Lock' para máxima ergonomía táctil.",
-        "Algoritmo Minimax configurable en 3 niveles de dificultad con evaluación posicional heurística.",
-        "HUD en Glassmorphism reactivo con cronómetros, historial algebraico formal y promoción de peones."
-      ],
-      impact:
-        "Experiencia inmersiva en WebGL compatible con cualquier navegador moderno sin requerir plugins externos ni descargas adicionales."
-    }
-  },
-  {
-    id: "sai-consult-platform",
-    title: "SAI-Consult Platform",
-    subtitle: "Arquitectura Corporativa Edge de Alto Rendimiento & Serverless",
-    category: "web",
-    categoryLabel: "Fullstack & Cloud",
-    featured: true,
-    year: "2026",
-    status: "Producción / Edge",
-    badge: "Cloudflare Pages + Edge API",
-    gradient: "linear-gradient(135deg, #10b981, #06b6d4)",
-    accentColor: "#10b981",
-    image: "assets/images/projects/sai-consult.svg",
-    shortDescription:
-      "Plataforma digital para consultoría empresarial construida bajo arquitectura Edge-First, logrando puntajes perfectos en Core Web Vitals (Lighthouse 100), seguridad estricta y CDN global.",
-    metrics: [
-      { label: "Puntaje Lighthouse", value: "100 / 100" },
-      { label: "Latencia Global", value: "< 35ms TTFB" },
-      { label: "Infraestructura", value: "Serverless Edge" },
-      { label: "Despliegue", value: "Cloudflare Network" }
-    ],
-    tags: ["Cloudflare Pages", "Wrangler", "Vanilla JS", "Modern CSS", "Edge Network", "SEO Semántico"],
-    links: {
-      github: "https://github.com/LuchoDB",
-      demo: "#",
-      caseStudy: true
-    },
-    caseStudy: {
-      clientContext:
-        "Empresas de servicios corporativos requieren máxima velocidad de carga, disponibilidad global ininterrumpida y posicionamiento orgánico dominante frente a competidores del sector.",
-      technicalChallenge:
-        "Eliminar sobrecargas de frameworks monolíticos que degradan el First Contentful Paint (FCP) y diseñar cabeceras de seguridad CSP rígidas para protección contra XSS e inyecciones.",
-      solution:
-        "Estructuración de una arquitectura Edge distribuida en Cloudflare Pages, minificación de assets, precarga de recursos críticos mediante cabeceras HTTP/2 Server Push y diseño de microcomponentes sin frameworks pesados.",
-      architecturalHighlights: [
-        "Distribución multi-región a través de 300+ puntos de presencia (PoP) de Cloudflare.",
-        "Optimización de Core Web Vitals con Largest Contentful Paint (LCP) inferior a 0.6 segundos.",
-        "Políticas de seguridad estrictas (Content-Security-Policy, HSTS, X-Frame-Options) validadas con grado A+.",
-        "Formularios serverless y métricas analíticas sin cookies respetuosas con la privacidad."
-      ],
-      impact:
-        "Incremento del 60% en retención de visitantes primerizos y reducción del costo de infraestructura a prácticamente cero."
+        "Reducción del 85% en tiempo de carga manual de gastos con categorización automática inteligente."
     }
   },
   {
     id: "python-mastery-lab",
     title: "Python Mastery Lab",
-    subtitle: "Entorno Interactivo de Algoritmia y Análisis de Complejidad",
-    category: "web",
-    categoryLabel: "Fullstack & Cloud",
+    subtitle: "Entorno Interactivo de Algoritmos y Análisis de Complejidad Big-O",
+    category: "desktop",
+    categoryLabel: "Algoritmia & Software",
     featured: false,
+    flagship: false,
     year: "2026",
     status: "Educativo / Activo",
     badge: "Algoritmos & Benchmarks",
@@ -151,14 +203,14 @@ const PROJECTS_DATA = [
     accentColor: "#f59e0b",
     image: "assets/images/projects/python-mastery.svg",
     shortDescription:
-      "Plataforma interactiva para el estudio y visualización paso a paso de estructuras de datos complejas, análisis asintótico Big-O y benchmarks de rendimiento computacional.",
+      "Plataforma interactiva para el estudio y visualización en tiempo real de estructuras de datos complejas (árboles AVL, grafos dirigidos, tablas hash) y evaluación de rendimiento computacional en operaciones críticas.",
     metrics: [
-      { label: "Estructuras Soportadas", value: "25+ Tipos" },
-      { label: "Métricas", value: "Tiempo Real Big-O" },
-      { label: "Motor", value: "Vite + Web Workers" },
+      { label: "Estructuras", value: "25+ Tipos" },
+      { label: "Métricas", value: "Big-O Tiempo Real" },
+      { label: "Ejecución", value: "Web Workers" },
       { label: "Licencia", value: "Open Source" }
     ],
-    tags: ["Python", "JavaScript", "Algoritmos", "Estructuras de Datos", "Vite", "Benchmarks"],
+    tags: ["Python", "JavaScript", "Estructuras de Datos", "Algoritmos", "Vite", "Web Workers"],
     links: {
       github: "https://github.com/LuchoDB",
       demo: "#",
@@ -166,43 +218,43 @@ const PROJECTS_DATA = [
     },
     caseStudy: {
       clientContext:
-        "Aprender algoritmos avanzados y estructuras de datos abstractas suele ser difícil cuando solo se cuenta con explicaciones teóricas sin contraste visual dinámico.",
+        "El estudio y análisis de algoritmos avanzados requiere una correlación visual inmediata entre la estructura de datos teórica y el costo computacional en memoria y CPU.",
       technicalChallenge:
-        "Simular la ejecución paso a paso de algoritmos (grafos, árboles AVL, ordenamientos) permitiendo pausar, retroceder e inspeccionar punteros en tiempo real.",
+        "Simular pasos de ejecución y rebalanceos de estructuras en el navegador sin bloquear el hilo de interfaz de usuario.",
       solution:
-        "Creación de un motor visual basado en eventos discretos que traduce el flujo algorítmico a estados renderizables en Canvas SVG/HTML5 con cálculo simultáneo de operaciones elementales.",
+        "Aislamiento de los cómputos intensivos en Web Workers dedicados y renderizado reactivo en Canvas SVG con medición de operaciones elementales.",
       architecturalHighlights: [
-        "Aislamiento de la computación pesada en Web Workers para mantener 60 FPS en la interfaz gráfica.",
-        "Visualización interactiva de grafos dirigidos, árboles binarios balanceados y tablas hash.",
-        "Módulo de comparación comparativa de complejidad temporal (O(1), O(n log n), O(n^2)).",
-        "Módulos educativos documentados con buenas prácticas PEP 8 y tipado estático."
+        "Ejecución multi-hilo desacoplada de la interfaz de usuario principal.",
+        "Visualización interactiva de árboles balanceados, grafos y algoritmos de caminos mínimos (Dijkstra, A*).",
+        "Comparativas empíricas de tiempo vs curvas asintóticas teóricas."
       ],
       impact:
-        "Facilitó la comprensión intuitiva de problemas algorítmicos complejos a más de 300 estudiantes y desarrolladores."
+        "Herramienta interactiva para consolidar conceptos fundamentales de algoritmia y estructuras de datos eficientes."
     }
   },
   {
-    id: "nexus-microservices-monitor",
+    id: "nexus-system-telemetry",
     title: "Nexus System Telemetry",
-    subtitle: "Dashboard Reactivo para Monitoreo de Microservicios y APIs",
-    category: "ai",
-    categoryLabel: "Fullstack & DevOps",
+    subtitle: "Dashboard Reactivo para Monitoreo de Métricas y Streaming con WebSockets",
+    category: "web",
+    categoryLabel: "Desarrollo Web & Cloud",
     featured: false,
+    flagship: false,
     year: "2026",
     status: "Open Source",
-    badge: "Observabilidad & Métricas",
+    badge: "Streaming & Observabilidad",
     gradient: "linear-gradient(135deg, #06b6d4, #3b82f6)",
     accentColor: "#06b6d4",
     image: "assets/images/projects/nexus.svg",
     shortDescription:
-      "Panel de control y telemetría de sistemas distribuidos con streaming de eventos por WebSockets, detección de anomalías en latencia y alertas automatizadas.",
+      "Panel reactivo de supervisión y telemetría de sistemas con streaming continuo por WebSockets, detección estadística de anomalías y visualización gráfica fluida de latencias.",
     metrics: [
-      { label: "Frecuencia de Muestreo", value: "100ms" },
+      { label: "Frecuencia Muestreo", value: "100ms" },
       { label: "Consumo Memoria", value: "< 28 MB" },
-      { label: "Protocolos", value: "WebSocket / REST" },
+      { label: "Protocolo", value: "WebSockets / REST" },
       { label: "Alertas", value: "Tiempo Real" }
     ],
-    tags: ["TypeScript", "WebSockets", "Node.js", "Tailwind/CSS", "Docker", "DevOps"],
+    tags: ["TypeScript", "WebSockets", "Node.js", "Docker", "DevOps"],
     links: {
       github: "https://github.com/LuchoDB",
       demo: "#",
@@ -210,111 +262,162 @@ const PROJECTS_DATA = [
     },
     caseStudy: {
       clientContext:
-        "La supervisión de microservicios en arquitecturas distribuidas suele depender de herramientas pesadas que consumen excesivos recursos en entornos pequeños o medianos.",
+        "El monitoreo de recursos y rendimiento de servicios locales o remotos requería una interfaz liviana con bajo consumo de memoria y renderizado continuo sin pausas.",
       technicalChallenge:
-        "Recibir y graficar miles de eventos por segundo en el navegador sin provocar saturación de recolección de basura (Garbage Collection lag).",
+        "Ingerir ráfagas continuas de telemetría sin degradar la fluidez visual a 60 FPS en el navegador.",
       solution:
-        "Arquitectura basada en buffers circulares y renderizado eficiente en Canvas 2D con suscripción por canales WebSockets comprimidos.",
+        "Uso de buffers circulares tipados y renderizado optimizado en Canvas 2D con suscripción reactiva por WebSockets.",
       architecturalHighlights: [
-        "Uso de ArrayBuffers tipados para serialización y deserialización binaria ultrarrápida.",
-        "Detección predictiva de cuellos de botella basada en ventanas deslizantes de desviación estándar.",
-        "Contenedores Docker listos para desplegar con orquestación simple."
+        "Serialización eficiente y gestión de memoria con estructuras circulares.",
+        "Visualización fluida en tiempo real con Canvas 2D.",
+        "Detección predictiva de saturación con cálculo estadístico móvil."
       ],
       impact:
-        "Reducción del 40% en el tiempo medio de detección y resolución de incidentes (MTTD/MTTR)."
+        "Panel liviano y fiable para inspeccionar la salud operativa y rendimiento de servicios en tiempo real."
     }
   }
 ];
 
-// Stack Tecnológico Organizado por Capas de Ingeniería
-const TECH_STACK = [
+// Especialidades y Áreas de Trabajo
+const SERVICES_DATA = [
   {
-    category: "Lenguajes & Paradigmas",
-    icon: "code",
-    skills: [
-      { name: "TypeScript", level: "Avanzado", detail: "Tipado estricto, genéricos, diseño de contratos" },
-      { name: "JavaScript (ES6+)", level: "Experto", detail: "Asincronía, Web APIs, Event Loop, DOM" },
-      { name: "Python", level: "Avanzado", detail: "Estructuras de datos, algoritmos, scripts de automatización" },
-      { name: "HTML5 Semántico", level: "Experto", detail: "Accesibilidad WCAG AA, SEO técnico, Schema.org" },
-      { name: "CSS3 Moderno", level: "Avanzado", detail: "Variables CSS, Grid, Flexbox, micro-animaciones" }
+    id: "service-desktop",
+    title: "Desarrollo de Software de Escritorio",
+    badge: "Desktop • Electron • SQLite",
+    description:
+      "Construcción de programas de escritorio prácticos, ágiles y seguros para Windows y multiplataforma. Ideales para operar con fluidez sin conexión a internet, procesar información de inmediato y almacenar datos localmente con total fiabilidad.",
+    deliverables: [
+      "Programas de escritorio para Windows y multiplataforma",
+      "Procesamiento rápido de datos y funcionamiento offline",
+      "Almacenamiento seguro con bases de datos locales",
+      "Interfaces cómodas, claras y fáciles de usar"
     ]
   },
   {
-    category: "Frontend & UI Engineering",
-    icon: "layout",
-    skills: [
-      { name: "React 19 / 18", level: "Avanzado", detail: "Hooks personalizados, arquitectura de componentes, Concurrent Mode" },
-      { name: "Three.js / WebGL", level: "Intermedio-Avanzado", detail: "Escenas 3D, cámaras, sombreadores PBR, partículas" },
-      { name: "Vite Toolchain", level: "Experto", detail: "Configuración HMR, optimización de bundles, plugins" },
-      { name: "Responsive & A11y", level: "Experto", detail: "Mobile-first, contraste estricto, navegación por teclado" }
+    id: "service-cloud",
+    title: "Desarrollo Web Moderno y Rápido",
+    badge: "Web • Alto Rendimiento",
+    description:
+      "Diseño y creación de sitios y plataformas web que cargan al instante en cualquier dispositivo. Enfoque en navegación ágil, estética cuidada, excelente visibilidad en motores de búsqueda y protección de datos.",
+    deliverables: [
+      "Sitios y plataformas web de carga instantánea",
+      "Diseño adaptable a celulares, tablets y computadoras",
+      "Optimización para buscadores (SEO) y accesibilidad",
+      "Infraestructura cloud moderna, confiable y segura"
     ]
   },
   {
-    category: "Mobile & Multiplataforma",
-    icon: "smartphone",
-    skills: [
-      { name: "Capacitor 8", level: "Avanzado", detail: "Puentes nativos Android, plugins de hardware (Cámara, Storage)" },
-      { name: "Android Toolchain", level: "Intermedio", detail: "SDK, Gradle, emuladores y testing en hardware real" },
-      { name: "Progressive Web Apps", level: "Avanzado", detail: "Service Workers, cache offline, manifiestos web" }
+    id: "service-carto-code",
+    title: "Herramientas de Software & Análisis de Código",
+    badge: "Tooling • Innovación",
+    description:
+      "Creación de herramientas interactivas para explorar y comprender proyectos de software (como la Suite Cartógrafo). Facilitan el entendimiento rápido de bases de código complejas y optimizan el trabajo colaborativo.",
+    deliverables: [
+      "Mapas visuales e interactivos de proyectos",
+      "Visualización clara de relaciones y flujos de trabajo",
+      "Detección oportuna de áreas de mejora",
+      "Guías interactivas para facilitar la incorporación a proyectos"
     ]
   },
   {
-    category: "IA, APIs & Backend",
-    icon: "cpu",
-    skills: [
-      { name: "Google Gemini API", level: "Avanzado", detail: "Modelos multimodales, structured output JSON, visión" },
-      { name: "Node.js & Express", level: "Intermedio-Avanzado", detail: "Servicios REST, middlewares, gestión asíncrona" },
-      { name: "WebSockets & Event Streams", level: "Avanzado", detail: "Comunicación bidireccional en tiempo real" },
-      { name: "Bases de Datos & SQL", level: "Intermedio", detail: "Modelado relacional, PostgreSQL, SQLite local" }
-    ]
-  },
-  {
-    category: "Cloud, DevOps & Calidad",
-    icon: "cloud",
-    skills: [
-      { name: "Cloudflare Pages & Edge", level: "Avanzado", detail: "Despliegues CDN, Wrangler CLI, headers HTTP seguros" },
-      { name: "Git & GitHub CI/CD", level: "Avanzado", detail: "Flujos trunk-based, code reviews, automatización" },
-      { name: "Linter & Static Analysis", level: "Avanzado", detail: "Oxlint, ESLint, TypeScript Compiler" },
-      { name: "Lighthouse & Core Web Vitals", level: "Experto", detail: "LCP, CLS, INP optimizados para 99+ constante" }
+    id: "service-ai",
+    title: "Integración de IA & Aplicaciones Prácticas",
+    badge: "Inteligencia Artificial Práctica",
+    description:
+      "Implementación de funciones inteligentes en aplicaciones web y móviles, tales como análisis automático de documentos, procesamiento visual de imágenes y automatización de tareas cotidianas.",
+    deliverables: [
+      "Funcionalidades inteligentes integradas a tu producto",
+      "Lectura y extracción de datos desde imágenes o comprobantes",
+      "Aplicaciones que funcionan tanto en celular como en navegador",
+      "Automatización de procesos repetitivos para ahorrar tiempo"
     ]
   }
 ];
 
-// Principios de Ingeniería y Filosofía de Trabajo
+// Stack Tecnológico
+const TECH_STACK = [
+  {
+    category: "Desarrollo de Software & Algoritmia",
+    icon: "code",
+    skills: [
+      { name: "Cálculo Numérico & Vectorial", level: "Avanzado", detail: "Orientación azimutal, coordenadas geométricas, descomposición vectorial" },
+      { name: "Estructuras de Datos & Big-O", level: "Avanzado", detail: "Árboles, grafos, tablas hash y optimización algorítmica" },
+      { name: "Arquitectura de Software", level: "Avanzado", detail: "Patrones de diseño, separación de responsabilidades, modularidad" },
+      { name: "Bases de Datos Relacionales", level: "Avanzado", detail: "SQLite embebido, modelado relacional, consultas indexadas" }
+    ]
+  },
+  {
+    category: "Tooling de Software, Análisis Estático & IA",
+    icon: "layers",
+    skills: [
+      { name: "Cartógrafo de Arquitectura", level: "Creador", detail: "Mapeo de código fuente, grafos de dependencias y deuda técnica" },
+      { name: "Principio Cero Alucinaciones", level: "Especialista", detail: "Hechos verificables en código vs hipótesis inferidas" },
+      { name: "Next.js 16 & React 19", level: "Avanzado", detail: "App Router, componentes funcionales, Server Components" },
+      { name: "Tailwind CSS & Sistemas de Diseño", level: "Avanzado", detail: "Estilizado moderno, componentes reutilizables y modo claro" }
+    ]
+  },
+  {
+    category: "Lenguajes & Tecnologías Web",
+    icon: "layout",
+    skills: [
+      { name: "TypeScript 5.7", level: "Avanzado", detail: "Tipado estricto, interfaces sólidas y validación en compilación" },
+      { name: "JavaScript (ES6+)", level: "Avanzado", detail: "Asincronía, Event Loop, APIs del navegador y modularidad" },
+      { name: "Python", level: "Avanzado", detail: "Algoritmos, scripting, automatización y análisis de datos" },
+      { name: "HTML5 Semántico & SEO", level: "Avanzado", detail: "Accesibilidad WCAG 2.1 AA, marcado Schema.org y buenas prácticas" },
+      { name: "CSS3 Moderno", level: "Avanzado", detail: "Variables CSS, Flexbox, Grid y diseño responsivo fluido" }
+    ]
+  },
+  {
+    category: "Plataformas, Cloud & Rendimiento",
+    icon: "compass",
+    skills: [
+      { name: "Electron Desktop", level: "Avanzado", detail: "Comunicación IPC segura con ContextBridge, empaquetado para Windows" },
+      { name: "Cloudflare Pages & Edge", level: "Avanzado", detail: "Distribución en CDN global, Wrangler, seguridad HTTP A+" },
+      { name: "Lighthouse & Core Web Vitals", level: "Avanzado", detail: "Auditorías de 100/100 en rendimiento, accesibilidad y SEO" },
+      { name: "Git & GitHub Actions", level: "Avanzado", detail: "Control de versiones, flujos de integración y despliegue continuo" }
+    ]
+  }
+];
+
+// Principios de Desarrollo de Software
 const ENGINEERING_PHILOSOPHY = [
   {
     number: "01",
-    title: "Arquitectura Orientada a Rendimiento",
-    description: "Cada byte cuenta. Priorizo código eficiente, tiempos de carga inferiores a 1 segundo y experiencias fluidas sin sobrecarga de librerías innecesarias."
+    title: "Claridad y Buen Funcionamiento",
+    description: "Cada funcionalidad se diseña pensando en su utilidad real. Me aseguro de que todo opere de forma fluida, predecible y sin sorpresas para el usuario."
   },
   {
     number: "02",
-    title: "Tipado Estricto y Calidad de Código",
-    description: "Uso riguroso de TypeScript y análisis estático para prevenir fallos en tiempo de ejecución, documentar contratos de datos y garantizar mantenibilidad a largo plazo."
+    title: "Datos Precisos y Verificables",
+    description: "Tanto en aplicaciones de uso diario como en herramientas analíticas, la información debe ser exacta, transparente y de absoluta confianza."
   },
   {
     number: "03",
-    title: "Experiencia de Usuario & Estética Sobria",
-    description: "El software potente debe ser agradable e intuitivo. Cuido la jerarquía visual, la accesibilidad (a11y) y los detalles que marcan la diferencia profesional."
+    title: "Soluciones Ligeras y Eficientes",
+    description: "Priorizo el código limpio y directo. Evito complejidades innecesarias para asegurar aplicaciones ágiles, rápidas y fáciles de mantener."
   },
   {
     number: "04",
-    title: "Innovación Práctica con IA y Nuevas Tecnologías",
-    description: "Integro modelos de IA de última generación (como Gemini Vision) donde aportan valor real de negocio, manteniendo predictibilidad y fiabilidad en las respuestas."
+    title: "Diseño Pensado en las Personas",
+    description: "El software debe sentirse cómodo y natural. Busco interfaces agradables, sin fricción visual y donde cada acción sea intuitiva desde el primer uso."
   }
 ];
 
-// Metadatos Globales de Autor
+// Perfil de Autor
 const AUTHOR_PROFILE = {
-  name: "Luciano",
-  handle: "LuchoDB",
-  role: "Desarrollador de Software & Diseñador de Sistemas",
-  location: "Argentina / Remoto Global",
-  email: "luciano.developer@luchodb.dev",
+  fullName: "Luciano Díaz Bertozzi",
+  shortName: "Luciano",
+  monogram: "L",
+  role: "Desarrollador de Software",
+  statusText: "Desarrollador de software enfocado en crear soluciones prácticas y modernas",
+  specialties: "Desarrollo Web Moderno • Aplicaciones de Escritorio • Interfaces Intuitivas",
+  location: "Paraná, Entre Ríos, Argentina / Remoto",
+  email: "lucianodiazbertozzi@gmail.com",
+  phone: "3434709389",
+  whatsapp: "+54 9 343 470-9389",
+  whatsappUrl: "https://wa.me/5493434709389",
   github: "https://github.com/LuchoDB",
-  linkedin: "https://linkedin.com/in/luchodb",
-  availability: "Disponible para proyectos de alto impacto y roles de ingeniería",
-  yearsExperience: "4+",
-  projectsCompleted: "15+",
-  coreFocus: "Fullstack, Mobile Nativo/Híbrido, Gráficos WebGL & Soluciones impulsadas por Inteligencia Artificial"
+  linkedin: "https://linkedin.com/in/lucianodiazbertozzi",
+  availability: "Disponible para desarrollo de proyectos, contrataciones y nuevas oportunidades profesionales",
+  lighthouseScore: "100/100"
 };
