@@ -35,9 +35,21 @@ const UI_TRANSLATIONS = {
     stat_solutions: "End-to-End",
     stat_solutions_caption: "Soluciones de Punta a Punta",
 
-    // Floating badges hero
+    // Floating badges hero & Profile card
     floating_badge_1: "Soluciones a Medida",
     floating_badge_2: "Rápido, Moderno y Fluido",
+    brand_sub: "DESARROLLADOR DE SOFTWARE",
+    profile_card_role: "Desarrollador de Software",
+    profile_radar_label_1: "Especialidad:",
+    profile_radar_val_1: "Software de Escritorio y Web",
+    profile_radar_label_2: "Mi Enfoque:",
+    profile_radar_val_2: "Experiencia de usuario y rendimiento",
+    profile_radar_label_3: "Herramientas:",
+    profile_radar_val_3: "Java, Spring Boot, React y Node.js",
+    profile_radar_label_4: "Compromiso:",
+    profile_radar_val_4: "Soluciones claras, rápidas y a medida",
+    profile_card_note: "✓ Proyectos reales listos para usar, con atención al detalle y diseño cuidado.",
+    floating_whatsapp_tooltip: "¿Conversamos? WhatsApp: 3434709389",
 
     // Trust strip
     trust_strip_title: "Tecnologías & Enfoque de Trabajo",
@@ -153,9 +165,21 @@ const UI_TRANSLATIONS = {
     stat_solutions: "End-to-End",
     stat_solutions_caption: "Full Lifecycle Solutions",
 
-    // Floating badges hero
+    // Floating badges hero & Profile card
     floating_badge_1: "Tailored Solutions",
     floating_badge_2: "Fast, Modern & Smooth",
+    brand_sub: "SOFTWARE DEVELOPER",
+    profile_card_role: "Software Developer",
+    profile_radar_label_1: "Specialty:",
+    profile_radar_val_1: "Desktop & Web Software",
+    profile_radar_label_2: "My Focus:",
+    profile_radar_val_2: "User experience & performance",
+    profile_radar_label_3: "Core Stack:",
+    profile_radar_val_3: "Java, Spring Boot, React & Node.js",
+    profile_radar_label_4: "Commitment:",
+    profile_radar_val_4: "Clear, fast, and tailored solutions",
+    profile_card_note: "✓ Real-world projects ready to run, with craft and attention to detail.",
+    floating_whatsapp_tooltip: "Let's chat! WhatsApp: +54 9 343 470-9389",
 
     // Trust strip
     trust_strip_title: "Technologies & Engineering Focus",
