@@ -138,7 +138,7 @@ const UI_TRANSLATIONS = {
     // Hero
     hero_badge: "✨ Software Developer • Web & Desktop Solutions",
     hero_title: 'I build modern software, <span class="text-gradient-hero">agile applications</span>, and custom web solutions.',
-    hero_lead: "Hello! I'm Luciano Díaz Bertozzi, software developer and soon-to-be Programming Technician (UTN Paraná). I design and build desktop applications and web platforms end-to-end: data modeling, databases, backend, and user interface. I primarily work with Java, Spring Boot, and React, and I focus on delivering tools that are easy to use, well-architected under the hood, and ready to perform. If you're looking to add someone to your team or need custom software to solve a real-world problem, let's connect.",
+    hero_lead: "Hello! I'm Luciano Díaz Bertozzi, software developer and soon-to-be Programming Technician (UTN Paraná). I design and build desktop applications and web platforms end-to-end: data modeling, databases, backend, and user interface. I mainly work with Java, Spring Boot, and React, and I focus on delivering tools that are easy to use, well-architected under the hood, and ready to perform. If you're looking to add someone to your team or need custom software to solve a real-world problem, let's connect.",
     hero_btn_explore: "Explore Key Projects",
     hero_btn_whatsapp: "WhatsApp: +54 9 343 470-9389",
     hero_btn_contact: "Contact Me",
