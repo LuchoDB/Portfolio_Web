@@ -292,14 +292,18 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   list-style: none;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  flex-wrap: nowrap;
 }
 
 .nav-link {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
   font-size: 14px;
   font-weight: 500;
   color: var(--text-secondary);
-  padding: 8px 14px;
+  padding: 8px 12px;
   border-radius: var(--radius-DEFAULT);
   transition: color var(--transition-fast), background-color var(--transition-fast);
 }
@@ -2116,8 +2120,8 @@ body.nav-open {
   }
 }
 
-/* 3. Smartphones y Tablets en Vertical (<= 768px - Core Mobile Experience) */
-@media (max-width: 768px) {
+/* 3. Smartphones y Tablets (<= 960px - Core Responsive Experience) */
+@media (max-width: 960px) {
   /* Contenedor adaptado a márgenes táctiles */
   .container {
     padding-left: 16px;
