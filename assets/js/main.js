@@ -477,6 +477,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // Manejo explícito de clics en la barra de navegación inferior móvil
+  mobLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      if (targetId && targetId.startsWith('#') && targetId.length > 1) {
+        e.preventDefault();
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const headerOffset = 64;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+          mobLinks.forEach(item => item.classList.remove('active'));
+          link.classList.add('active');
+        }
+      }
+    });
+  });
+
   window.addEventListener('scroll', onScroll, { passive: true });
 
   // Formulario

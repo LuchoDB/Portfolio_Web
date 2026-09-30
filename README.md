@@ -62,4 +62,5 @@ Portfolio_Web/
 **Luciano Díaz Bertozzi**  
 Desarrollador de Software  
 - GitHub: [@LuchoDB](https://github.com/LuchoDB)  
+- LinkedIn: [luciano-diaz-bertozzi](https://www.linkedin.com/in/luciano-diaz-bertozzi)  
 - Correo: `lucianodiazbertozzi@gmail.com`

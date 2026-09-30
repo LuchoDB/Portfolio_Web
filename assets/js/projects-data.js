@@ -417,7 +417,7 @@ const AUTHOR_PROFILE = {
   whatsapp: "+54 9 343 470-9389",
   whatsappUrl: "https://wa.me/5493434709389",
   github: "https://github.com/LuchoDB",
-  linkedin: "https://linkedin.com/in/lucianodiazbertozzi",
+  linkedin: "https://www.linkedin.com/in/luciano-diaz-bertozzi",
   availability: "Disponible para desarrollo de proyectos, contrataciones y nuevas oportunidades profesionales",
   lighthouseScore: "100/100"
 };
