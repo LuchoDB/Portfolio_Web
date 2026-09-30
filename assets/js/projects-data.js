@@ -337,34 +337,23 @@ const SERVICES_DATA = [
 // Stack Tecnológico
 const TECH_STACK = [
   {
-    category: "Desarrollo de Software & Algoritmia",
+    category: "Desarrollo de Software & Backend",
     icon: "code",
     skills: [
-      { name: "Cálculo Numérico & Vectorial", level: "Avanzado", detail: "Orientación azimutal, coordenadas geométricas, descomposición vectorial" },
-      { name: "Estructuras de Datos & Big-O", level: "Avanzado", detail: "Árboles, grafos, tablas hash y optimización algorítmica" },
-      { name: "Arquitectura de Software", level: "Avanzado", detail: "Patrones de diseño, separación de responsabilidades, modularidad" },
-      { name: "Bases de Datos Relacionales", level: "Avanzado", detail: "SQLite embebido, modelado relacional, consultas indexadas" }
+      { name: "Java & Spring Boot", level: "Stack Principal", detail: "APIs REST, arquitectura MVC, Spring Data, seguridad y servicios ordenados" },
+      { name: "Bases de Datos Relacionales", level: "Avanzado", detail: "Modelado de datos relacional, consultas SQL, indexación y SQLite" },
+      { name: "Arquitectura de Software", level: "Avanzado", detail: "Patrones de diseño, separación de responsabilidades, código modular" },
+      { name: "Estructuras de Datos & Big-O", level: "Avanzado", detail: "Árboles, grafos, tablas hash y optimización algorítmica" }
     ]
   },
   {
-    category: "Tooling de Software, Análisis Estático & IA",
-    icon: "layers",
-    skills: [
-      { name: "Cartógrafo de Arquitectura", level: "Creador", detail: "Mapeo de código fuente, grafos de dependencias y deuda técnica" },
-      { name: "Principio Cero Alucinaciones", level: "Especialista", detail: "Hechos verificables en código vs hipótesis inferidas" },
-      { name: "Next.js 16 & React 19", level: "Avanzado", detail: "App Router, componentes funcionales, Server Components" },
-      { name: "Tailwind CSS & Sistemas de Diseño", level: "Avanzado", detail: "Estilizado moderno, componentes reutilizables y modo claro" }
-    ]
-  },
-  {
-    category: "Lenguajes & Tecnologías Web",
+    category: "Frontend & Tecnologías Web",
     icon: "layout",
     skills: [
-      { name: "TypeScript 5.7", level: "Avanzado", detail: "Tipado estricto, interfaces sólidas y validación en compilación" },
-      { name: "JavaScript (ES6+)", level: "Avanzado", detail: "Asincronía, Event Loop, APIs del navegador y modularidad" },
-      { name: "Python", level: "Avanzado", detail: "Algoritmos, scripting, automatización y análisis de datos" },
-      { name: "HTML5 Semántico & SEO", level: "Avanzado", detail: "Accesibilidad WCAG 2.1 AA, marcado Schema.org y buenas prácticas" },
-      { name: "CSS3 Moderno", level: "Avanzado", detail: "Variables CSS, Flexbox, Grid y diseño responsivo fluido" }
+      { name: "React 19 & TypeScript", level: "Stack Principal", detail: "Hooks, componentes funcionales, tipado estricto e interfaces reactivas" },
+      { name: "JavaScript Moderno (ES6+)", level: "Avanzado", detail: "Asincronía, Event Loop, APIs del navegador y modularidad" },
+      { name: "Next.js (App Router)", level: "Avanzado", detail: "Server components, enrutamiento, SSR/SSG y despliegues Edge" },
+      { name: "HTML5 Semántico & CSS3", level: "Avanzado", detail: "Diseño adaptable, accesibilidad WCAG 2.1 AA, variables CSS y Flex/Grid" }
     ]
   },
   {
@@ -409,8 +398,8 @@ const AUTHOR_PROFILE = {
   shortName: "Luciano",
   monogram: "L",
   role: "Desarrollador de Software",
-  statusText: "Desarrollador de software enfocado en crear soluciones prácticas y modernas",
-  specialties: "Desarrollo Web Moderno • Aplicaciones de Escritorio • Interfaces Intuitivas",
+  statusText: "Desarrollador de software y próximo Técnico en Programación (UTN Paraná)",
+  specialties: "Java & Spring Boot • React • Aplicaciones Desktop & Web End-to-End",
   location: "Paraná, Entre Ríos, Argentina / Remoto",
   email: "lucianodiazbertozzi@gmail.com",
   phone: "3434709389",

@@ -2,6 +2,7 @@
  * PORTFOLIO WEB - LÓGICA DE INTERFAZ E INTERACCIÓN
  * Estilo: NextGenAppsPro (Bootstrap 5 Style)
  * Autor: Luciano Díaz Bertozzi
+ * Soporte Bilingüe: Español (ES) / English (EN)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,20 +29,67 @@ document.addEventListener('DOMContentLoaded', () => {
   const stackContainer = document.getElementById('stack-container');
   const philosophyContainer = document.getElementById('philosophy-container');
 
+  // Estado activo
+  let currentLang = localStorage.getItem('portfolio_lang') || 'es';
+  if (!['es', 'en'].includes(currentLang)) currentLang = 'es';
+  let currentFilter = 'all';
+
   // Asignar año dinámico
   if (currentYearSpan) {
     currentYearSpan.textContent = new Date().getFullYear();
   }
 
   // =========================================================================
+  // SISTEMA DE INTERNACIONALIZACIÓN (i18n)
+  // =========================================================================
+  const t = (key) => {
+    if (typeof UI_TRANSLATIONS !== 'undefined' && UI_TRANSLATIONS[currentLang] && UI_TRANSLATIONS[currentLang][key]) {
+      return UI_TRANSLATIONS[currentLang][key];
+    }
+    if (typeof UI_TRANSLATIONS !== 'undefined' && UI_TRANSLATIONS['es'] && UI_TRANSLATIONS['es'][key]) {
+      return UI_TRANSLATIONS['es'][key];
+    }
+    return key;
+  };
+
+  const getProjectsData = () => {
+    if (currentLang === 'en' && typeof PROJECTS_DATA_EN !== 'undefined') {
+      return PROJECTS_DATA_EN;
+    }
+    return typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA : [];
+  };
+
+  const getServicesData = () => {
+    if (currentLang === 'en' && typeof SERVICES_DATA_EN !== 'undefined') {
+      return SERVICES_DATA_EN;
+    }
+    return typeof SERVICES_DATA !== 'undefined' ? SERVICES_DATA : [];
+  };
+
+  const getTechStackData = () => {
+    if (currentLang === 'en' && typeof TECH_STACK_EN !== 'undefined') {
+      return TECH_STACK_EN;
+    }
+    return typeof TECH_STACK !== 'undefined' ? TECH_STACK : [];
+  };
+
+  const getPhilosophyData = () => {
+    if (currentLang === 'en' && typeof ENGINEERING_PHILOSOPHY_EN !== 'undefined') {
+      return ENGINEERING_PHILOSOPHY_EN;
+    }
+    return typeof ENGINEERING_PHILOSOPHY !== 'undefined' ? ENGINEERING_PHILOSOPHY : [];
+  };
+
+  // =========================================================================
   // 1. RENDERIZADO DE PROYECTOS FLAGSHIP (SAI CONSULT, SAI SOFT, CARTÓGRAFO)
   // =========================================================================
   const renderFlagshipProjects = () => {
-    if (!flagshipContainer || !Array.isArray(PROJECTS_DATA)) return;
+    if (!flagshipContainer) return;
 
-    const flagships = PROJECTS_DATA.filter(p => p.flagship === true);
+    const data = getProjectsData();
+    const flagships = data.filter(p => p.flagship === true);
 
-    flagshipContainer.innerHTML = flagships.map((project, idx) => {
+    flagshipContainer.innerHTML = flagships.map((project) => {
       const metricsHtml = project.metrics && project.metrics.length > 0
         ? `
           <div class="flagship-metrics-box">
@@ -50,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="f-metric-val">${escapeHtml(project.metrics[0].value)}</span>
             </div>
             <div class="f-metric-item">
-              <span class="f-metric-lbl">${escapeHtml(project.metrics[1] ? project.metrics[1].label : 'Categoría')}</span>
+              <span class="f-metric-lbl">${escapeHtml(project.metrics[1] ? project.metrics[1].label : (currentLang === 'en' ? 'Category' : 'Categoría'))}</span>
               <span class="f-metric-val">${escapeHtml(project.metrics[1] ? project.metrics[1].value : project.categoryLabel)}</span>
             </div>
           </div>
@@ -58,8 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
         : '';
 
       const tagsHtml = project.tags
-        ? project.tags.slice(0, 4).map(t => `<span class="f-tag">${escapeHtml(t)}</span>`).join('')
+        ? project.tags.slice(0, 4).map(tTag => `<span class="f-tag">${escapeHtml(tTag)}</span>`).join('')
         : '';
+
+      const caseStudyLabel = t('btn_case_study');
+      const caseStudyAria = currentLang === 'en'
+        ? `View Case Study for ${escapeHtml(project.title)}`
+        : `Ver Caso de Estudio de ${escapeHtml(project.title)}`;
 
       return `
         <article class="flagship-card" id="flagship-card-${escapeHtml(project.id)}">
@@ -83,13 +136,13 @@ document.addEventListener('DOMContentLoaded', () => {
               ${tagsHtml}
             </div>
             <div class="flagship-footer">
-              <button type="button" class="btn-open-case" data-project-id="${escapeHtml(project.id)}" id="btn-flagship-${escapeHtml(project.id)}" aria-label="Ver Caso de Estudio de ${escapeHtml(project.title)}">
+              <button type="button" class="btn-open-case" data-project-id="${escapeHtml(project.id)}" id="btn-flagship-${escapeHtml(project.id)}" aria-label="${caseStudyAria}">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                <span>Caso de Estudio</span>
+                <span>${caseStudyLabel}</span>
               </button>
               <div class="project-external-links">
                 ${project.links.github ? `
-                  <a href="${escapeHtml(project.links.github)}" target="_blank" rel="noopener noreferrer" class="btn-icon" style="width: 36px; height: 36px;" title="Ver código en GitHub" aria-label="Código fuente de ${escapeHtml(project.title)}">
+                  <a href="${escapeHtml(project.links.github)}" target="_blank" rel="noopener noreferrer" class="btn-icon" style="width: 36px; height: 36px;" title="GitHub" aria-label="GitHub: ${escapeHtml(project.title)}">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                   </a>
                 ` : ''}
@@ -99,15 +152,19 @@ document.addEventListener('DOMContentLoaded', () => {
         </article>
       `;
     }).join('');
+
+    attachModalTriggers();
   };
 
   // =========================================================================
-  // 2. RENDERIZADO DE SERVICIOS ESPECIALIZADOS (NEXTGENAPPSPRO SERVICES)
+  // 2. RENDERIZADO DE SERVICIOS ESPECIALIZADOS
   // =========================================================================
   const renderServices = () => {
-    if (!servicesContainer || !Array.isArray(SERVICES_DATA)) return;
+    if (!servicesContainer) return;
 
-    servicesContainer.innerHTML = SERVICES_DATA.map((srv, idx) => {
+    const services = getServicesData();
+
+    servicesContainer.innerHTML = services.map((srv) => {
       const deliverablesHtml = srv.deliverables.map(item => `
         <li class="deliverable-item">
           <svg class="deliverable-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -134,11 +191,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. RENDERIZADO DE GALERÍA DE PROYECTOS Y FILTROS
   // =========================================================================
   const renderProjects = (filter = 'all') => {
-    if (!projectsGrid || !Array.isArray(PROJECTS_DATA)) return;
+    if (!projectsGrid) return;
+
+    currentFilter = filter;
+    const data = getProjectsData();
 
     const filtered = filter === 'all'
-      ? PROJECTS_DATA
-      : PROJECTS_DATA.filter(p => p.category === filter);
+      ? data
+      : data.filter(p => p.category === filter);
 
     projectsGrid.innerHTML = '';
 
@@ -156,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="metric-mini-val">${escapeHtml(project.metrics[0].value)}</span>
             </div>
             <div class="metric-mini-item">
-              <span class="metric-mini-label">${escapeHtml(project.metrics[1] ? project.metrics[1].label : 'Categoría')}</span>
+              <span class="metric-mini-label">${escapeHtml(project.metrics[1] ? project.metrics[1].label : (currentLang === 'en' ? 'Category' : 'Categoría'))}</span>
               <span class="metric-mini-val">${escapeHtml(project.metrics[1] ? project.metrics[1].value : project.categoryLabel)}</span>
             </div>
           </div>
@@ -164,8 +224,13 @@ document.addEventListener('DOMContentLoaded', () => {
         : '';
 
       const tagsHtml = project.tags
-        ? project.tags.map(t => `<span class="project-tag">${escapeHtml(t)}</span>`).join('')
+        ? project.tags.map(tTag => `<span class="project-tag">${escapeHtml(tTag)}</span>`).join('')
         : '';
+
+      const caseStudyLabel = t('btn_case_study');
+      const caseStudyAria = currentLang === 'en'
+        ? `View Case Study for ${escapeHtml(project.title)}`
+        : `Ver Caso de Estudio de ${escapeHtml(project.title)}`;
 
       card.innerHTML = `
         <div class="project-banner">
@@ -182,13 +247,13 @@ document.addEventListener('DOMContentLoaded', () => {
             ${tagsHtml}
           </div>
           <div class="project-footer">
-            <button type="button" class="btn-case-study" data-project-id="${escapeHtml(project.id)}" id="btn-case-${escapeHtml(project.id)}" aria-label="Ver Caso de Estudio de ${escapeHtml(project.title)}">
+            <button type="button" class="btn-case-study" data-project-id="${escapeHtml(project.id)}" id="btn-case-${escapeHtml(project.id)}" aria-label="${caseStudyAria}">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-              <span>Caso de Estudio</span>
+              <span>${caseStudyLabel}</span>
             </button>
             <div class="project-external-links">
               ${project.links.github ? `
-                <a href="${escapeHtml(project.links.github)}" target="_blank" rel="noopener noreferrer" class="project-ext-icon" title="Ver Repositorio en GitHub" aria-label="Código fuente de ${escapeHtml(project.title)} en GitHub">
+                <a href="${escapeHtml(project.links.github)}" target="_blank" rel="noopener noreferrer" class="project-ext-icon" title="GitHub" aria-label="GitHub: ${escapeHtml(project.title)}">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 </a>
               ` : ''}
@@ -217,7 +282,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. MODAL DE CASO DE ESTUDIO (ACCESIBLE & RIGOR TÉCNICO)
   // =========================================================================
   const openModal = (projectId) => {
-    const project = PROJECTS_DATA.find(p => p.id === projectId);
+    const data = getProjectsData();
+    const project = data.find(p => p.id === projectId);
     if (!project || !modalOverlay) return;
 
     modalProjectTitle.textContent = project.title;
@@ -238,11 +304,17 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `).join('');
 
+    const contextTitle = currentLang === 'en' ? 'Project Context &amp; Objectives' : 'Contexto del Proyecto &amp; Objetivos';
+    const challengeTitle = t('modal_challenge_title');
+    const solutionTitle = t('modal_solution_title');
+    const metricsTitle = t('modal_metrics_title');
+    const impactTitle = t('modal_impact_title');
+
     modalContentBody.innerHTML = `
       <div class="case-section">
         <h4 class="case-subtitle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          Contexto del Proyecto &amp; Objetivos
+          ${contextTitle}
         </h4>
         <p class="case-text">${escapeHtml(cs.clientContext)}</p>
       </div>
@@ -250,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="case-section">
         <h4 class="case-subtitle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-          Desafío de Arquitectura
+          ${challengeTitle}
         </h4>
         <p class="case-text">${escapeHtml(cs.technicalChallenge)}</p>
       </div>
@@ -258,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="case-section">
         <h4 class="case-subtitle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-          Solución de Ingeniería
+          ${solutionTitle}
         </h4>
         <p class="case-text">${escapeHtml(cs.solution)}</p>
         <ul class="case-highlights-list">
@@ -267,14 +339,14 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
 
       <div class="case-section">
-        <h4 class="case-subtitle">Métricas Técnicas de Desempeño</h4>
+        <h4 class="case-subtitle">${metricsTitle}</h4>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 10px;">
           ${metricsDetail}
         </div>
       </div>
 
       <div class="case-section" style="margin-bottom: 0;">
-        <h4 class="case-subtitle">Impacto Medible</h4>
+        <h4 class="case-subtitle">${impactTitle}</h4>
         <p class="case-text" style="color: #34d399; font-weight: 500;">${escapeHtml(cs.impact)}</p>
       </div>
     `;
@@ -319,8 +391,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // 5. RENDERIZADO DEL STACK TECNOLÓGICO Y FILOSOFÍA
   // =========================================================================
-  if (stackContainer && Array.isArray(TECH_STACK)) {
-    stackContainer.innerHTML = TECH_STACK.map((cat, idx) => `
+  const renderStack = () => {
+    if (!stackContainer) return;
+    const stack = getTechStackData();
+
+    stackContainer.innerHTML = stack.map((cat, idx) => `
       <div class="stack-category-card" id="stack-cat-${idx}">
         <div class="stack-cat-header">
           <div class="stack-cat-icon-wrap" aria-hidden="true">
@@ -341,20 +416,23 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
     `).join('');
-  }
+  };
 
-  if (philosophyContainer && Array.isArray(ENGINEERING_PHILOSOPHY)) {
-    philosophyContainer.innerHTML = ENGINEERING_PHILOSOPHY.map((phil, idx) => `
+  const renderPhilosophy = () => {
+    if (!philosophyContainer) return;
+    const philosophy = getPhilosophyData();
+
+    philosophyContainer.innerHTML = philosophy.map((phil, idx) => `
       <div class="philosophy-card" id="philosophy-card-${idx}">
         <span class="philosophy-number">${escapeHtml(phil.number)}</span>
         <h3 class="philosophy-title">${escapeHtml(phil.title)}</h3>
         <p class="philosophy-desc">${escapeHtml(phil.description)}</p>
       </div>
     `).join('');
-  }
+  };
 
   // =========================================================================
-  // 6. COPIAR EMAIL CON TOAST
+  // 6. TOAST NOTICES & CLIPBOARD
   // =========================================================================
   const showToast = (message) => {
     if (!toastNotice) return;
@@ -368,9 +446,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (copyEmailBtn && emailTextEl) {
     copyEmailBtn.addEventListener('click', async () => {
       const email = emailTextEl.textContent.trim();
+      const successMsg = t('toast_email_copied');
       try {
         await navigator.clipboard.writeText(email);
-        showToast('¡Correo electrónico copiado al portapapeles!');
+        showToast(successMsg);
       } catch (err) {
         const textarea = document.createElement('textarea');
         textarea.value = email;
@@ -378,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
         textarea.select();
         document.execCommand('copy');
         document.body.removeChild(textarea);
-        showToast('¡Correo electrónico copiado al portapapeles!');
+        showToast(successMsg);
       }
     });
   }
@@ -386,9 +465,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (copyWhatsappBtn) {
     copyWhatsappBtn.addEventListener('click', async () => {
       const phone = '3434709389';
+      const successMsg = t('toast_phone_copied');
       try {
         await navigator.clipboard.writeText(phone);
-        showToast('¡Número de WhatsApp copiado: 3434709389!');
+        showToast(successMsg);
       } catch (err) {
         const textarea = document.createElement('textarea');
         textarea.value = phone;
@@ -396,13 +476,72 @@ document.addEventListener('DOMContentLoaded', () => {
         textarea.select();
         document.execCommand('copy');
         document.body.removeChild(textarea);
-        showToast('¡Número de WhatsApp copiado: 3434709389!');
+        showToast(successMsg);
       }
     });
   }
 
   // =========================================================================
-  // 7. NAVEGACIÓN MÓVIL Y SCROLLSPY
+  // 7. APLICAR IDIOMA Y EVENT LISTENERS DE TRADUCCIÓN
+  // =========================================================================
+  const applyLanguage = (lang, notify = false) => {
+    currentLang = lang;
+    localStorage.setItem('portfolio_lang', lang);
+    document.documentElement.lang = lang;
+
+    // Actualizar botones de idioma en header y mobile drawer
+    document.querySelectorAll('.lang-pill-btn').forEach(btn => {
+      if (btn.getAttribute('data-lang') === lang) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Actualizar textos estáticos mediante data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (UI_TRANSLATIONS[currentLang] && UI_TRANSLATIONS[currentLang][key]) {
+        el.innerHTML = UI_TRANSLATIONS[currentLang][key];
+      }
+    });
+
+    // Actualizar placeholders de inputs/textareas
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const key = el.getAttribute('data-i18n-ph');
+      if (UI_TRANSLATIONS[currentLang] && UI_TRANSLATIONS[currentLang][key]) {
+        el.placeholder = UI_TRANSLATIONS[currentLang][key];
+      }
+    });
+
+    // Re-renderizar componentes dinámicos con los datos del idioma activo
+    renderFlagshipProjects();
+    renderServices();
+    renderProjects(currentFilter);
+    renderStack();
+    renderPhilosophy();
+
+    if (notify) {
+      const msg = lang === 'en'
+        ? 'Website translated to English!'
+        : '¡Página traducida al Español!';
+      showToast(msg);
+    }
+  };
+
+  // Registrar listeners de cambio de idioma en todos los botones de switch
+  document.querySelectorAll('.lang-pill-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const lang = btn.getAttribute('data-lang');
+      if (lang && lang !== currentLang) {
+        applyLanguage(lang, true);
+      }
+    });
+  });
+
+  // =========================================================================
+  // 8. NAVEGACIÓN MÓVIL Y SCROLLSPY
   // =========================================================================
   const closeMobileMenu = () => {
     if (!mobileMenuToggle || !navMenu) return;
@@ -436,7 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileNavBackdrop.addEventListener('click', closeMobileMenu);
     }
 
-    navMenu.querySelectorAll('.nav-link, a').forEach(link => {
+    navMenu.querySelectorAll('.nav-link, a:not(.lang-pill-btn)').forEach(link => {
       link.addEventListener('click', closeMobileMenu);
     });
 
@@ -501,12 +640,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // Formulario
+  // Formulario de contacto
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      showToast('¡Gracias por tu mensaje! Me pondré en contacto contigo a la brevedad.');
+      showToast(t('toast_form_sent'));
       contactForm.reset();
     });
   }
@@ -521,8 +660,8 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/'/g, '&#039;');
   }
 
-  // Inicialización
-  renderFlagshipProjects();
-  renderServices();
-  renderProjects('all');
+  // =========================================================================
+  // 9. INICIALIZACIÓN CON EL IDIOMA SELECCIONADO
+  // =========================================================================
+  applyLanguage(currentLang, false);
 });
